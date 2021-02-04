@@ -1,11 +1,19 @@
-import './App.scss';
+import './App.scss'
+import React, { Component } from 'react'
+import movieData from '../../movieData'
 
-function App() {
-  return (
-    <div className="App">
-      Does THis Work?
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super()
+    this.state = { movieData }
+  }
+  render() {
+    return (
+      <div className="App">
+        {console.log(this.state)}
+      </div>
+    )
+  }
 }
 
 export default App;
