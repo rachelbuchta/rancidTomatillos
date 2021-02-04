@@ -1,0 +1,21 @@
+header {
+    height: 15vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    background-color: #1C1F2A;
+    align-items: center;
+    border-bottom: 3px solid #B02AF8;
+
+    h1 {
+        font-size: xx-large;
+        color: #B02AF8;
+        justify-content: flex-end;
+    }
+    img {
+        height: 100px;
+        width: 100px;
+        justify-content: flex-start;
+    }
+}
+
