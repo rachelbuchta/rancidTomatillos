@@ -1,0 +1,7 @@
+.moviesContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2em;
+    border: 3px dotted black;
+    background-color: aqua;
+}

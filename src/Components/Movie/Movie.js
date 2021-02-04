@@ -1,12 +1,12 @@
 import React from 'react'
 import './Movie.scss'
 
-const Movie = () => {
+const Movie = ({image, title, tagline}) => {
     return (
         <article className="movieCard">
-            <img />
-            <h2>Title</h2>
-            <p>Tagline</p>
+            <img src={image} alt="potato"/>
+            <h2>{title}</h2>
+            <p>{tagline}</p>
         </article>
     )
 }

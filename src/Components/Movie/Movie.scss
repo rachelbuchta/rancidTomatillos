@@ -1,0 +1,13 @@
+.movieCard {
+    // width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+}
+
+img {
+    height: 5em;
+    width:5em;
+}
