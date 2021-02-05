@@ -1,8 +1,9 @@
 import React from "react"
 
-const MovieDetails = ({movies, handleClick}) => {
+const MovieDetails = ({currentMovie, handleClick}) => {
   return (
-    <h1>Details</h1>
+
+    <h1>{currentMovie.title}</h1>
   )
 }
 

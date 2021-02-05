@@ -18,7 +18,7 @@ const Movies = ({movies, handleClick}) => {
 
     return(
       <section className="moviesContainer">
-          {movieCards}
+        {movieCards}
       </section>
   )
 }
