@@ -16,11 +16,15 @@ class App extends Component {
   }
 
   handleClick = (id) => {
-    
     const current = this.state.movies.find(movie => movie.id === id)
     // console.log(current)
     this.setState({currentMovie: current})
     console.log(this.state.currentMovie)
+  }
+
+  exitDetails = () => {
+    console.log("hey")
+    this.setState({currentMovie: ""})
   }
 
   render() {
@@ -33,9 +37,9 @@ class App extends Component {
         )}
 
         {this.state.currentMovie && (
-        <MovieDetails currentMovie={this.state.currentMovie}/>
+        <MovieDetails currentMovie={this.state.currentMovie} exitDetails={this.exitDetails}/>
         )}
-        
+
         <Footer />
       </div>
     )
