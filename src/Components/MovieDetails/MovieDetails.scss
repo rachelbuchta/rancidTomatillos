@@ -12,7 +12,9 @@ main {
   justify-content: center;
   width: 70%;
   height: 60%;
-  background-color: bisque;
+  background-color: whitesmoke;
+  border: 3px solid #B02AF8;
+  align-items: center;
 }
 
 .txtContainer {
@@ -30,7 +32,8 @@ main {
 }
 
 img {
-  width: 50%;
-  height: 70%;
+  width: 40%;
+  height: 95%;
+  // margin: 1%;
 }
 
