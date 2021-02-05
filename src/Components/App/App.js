@@ -4,25 +4,28 @@ import Movies from '../Movies/Movies'
 import movieData from '../../movieData'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
+import MovieDetails from '../MovieDetails/MovieDetails'
 
 class App extends Component {
   constructor() {
     super()
     this.state = { 
-      movies: movieData,
-      isClicked: null
+      movies: movieData.movies,
+      currentMovie: {}
      }
   }
 
-  handleClick = (event) => {
-    this.setState({isClicked: true})
+  handleClick = (id) => {
+    const current = this.state.movies.find(movie => movie.id === id)
+    console.log(current)
+    this.setState({currentMovie: current})
   }
 
   render() {
     return (
       <div className="App">
         <Header />
-        <Movies isClicked={this.state.isClicked}movies={this.state.movies} handleClick={this.handleClick}/>
+        <Movies movies={this.state.movies} handleClick={this.handleClick}/>
         <Footer />
       </div>
     )
@@ -37,3 +40,8 @@ export default App;
 //move handleclick
 
 // clear state  to empty string 
+
+// if currentMovie is true
+// this.state.display = movieDetails
+//else
+// this.state.display = allMovies

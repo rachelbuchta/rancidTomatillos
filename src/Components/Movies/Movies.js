@@ -2,8 +2,8 @@ import React from 'react'
 import './Movies.scss'
 import Movie from '../Movie/Movie'
 
-const Movies = ({movies, isClicked, handleClick}) => {
-  const movieCards = movies.movies.map(movie => {
+const Movies = ({movies, handleClick}) => {
+  const movieCards = movies.map(movie => {
     return (
       <Movie 
         image={movie.backdrop_path}
@@ -12,7 +12,6 @@ const Movies = ({movies, isClicked, handleClick}) => {
         id={movie.id}
         key={movie.id}
         handleClick={handleClick}
-        isClicked={isClicked}
       />
     )
   })
