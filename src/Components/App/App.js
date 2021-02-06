@@ -1,7 +1,6 @@
 import './App.scss'
 import React, { Component } from 'react'
 import Movies from '../Movies/Movies'
-// import movieData from '../../movieData'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import MovieDetails from '../MovieDetails/MovieDetails'
