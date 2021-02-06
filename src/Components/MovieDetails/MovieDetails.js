@@ -2,7 +2,11 @@ import React from 'react'
 import './MovieDetails.scss'
 
 const MovieDetails = ({currentMovie, exitDetails}) => {
-  console.log(currentMovie)
+
+  const convertToCurrency = (num) => {
+    return num.toLocaleString('EN-US', {style: 'currency', currency: 'USD'})
+  }
+ 
   return (
     <main>
       <img className="backdrop" src={currentMovie.backdrop_path} alt=""/>
@@ -16,16 +20,27 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
             <div className='dateContainer'>
               <p>Release Date: {currentMovie.release_date}</p>
               <p>Average Rating: {currentMovie.average_rating.toFixed(1)}</p>
-              <p>Runtime: {currentMovie.runtime}</p>
+              <p>Runtime: {currentMovie.runtime} minutes</p>
             </div>
-            <p>{currentMovie.genres}</p>
-            <p>{currentMovie.revenue}</p>
-            <p>{currentMovie.budget}</p>
+
+            {currentMovie.genres.length > 1 ? 
+            <p>Genres: {currentMovie.genres.join(', ')}</p> : 
+            <p>Genre: {currentMovie.genres}</p>}
+
+            {currentMovie.budget === 0 ? 
+            <p>Budget: $0</p> :
+            <p>Budget: {convertToCurrency(currentMovie.budget)}</p>
+            }
+
+            {currentMovie.revenue === 0 ?
+            <p>Revenue: $0</p> :
+            <p>Revenue: {convertToCurrency(currentMovie.revenue)}</p>
+            } 
           </div>
-          {/* <img src={currentMovie.poster_path} alt=''/> */}
         </section>
     </main>
   )
+  
 }
 
 export default MovieDetails

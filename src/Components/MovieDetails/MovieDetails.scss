@@ -30,7 +30,6 @@ main {
 .txtContainer {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
   width: 70%;
   z-index: 1;
@@ -43,34 +42,23 @@ main {
     .overview {
       text-align: center;
     }
-
 }
 
 .dateContainer {
   display: flex;
-
   justify-content: space-evenly;
   width: 100%;
 }
-
-// img {
-//   width: 40%;
-//   height: 95%;
-// }
 
 .btnWrapper {
   display: flex;
   flex-direction: row;
   justify-content: start;
   width: 100%;
-  // height: inherit;
-  // align-content: flex-start;
-  // z-index: 2;
   
     button {
       align-self: start;
     }
-
 }
 
 
