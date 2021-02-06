@@ -5,8 +5,8 @@ import reelzLogo from '../../images/movieTicket.png'
 const Header = () => {
     return (
         <header>
-            <img src={reelzLogo} alt="Reelz Logo"/>
-            <h1>Reelz</h1>
+          <img className="headerImg" src={reelzLogo} alt="Reelz Logo"/>
+          <h1>Reelz</h1>
         </header>
     )
 }

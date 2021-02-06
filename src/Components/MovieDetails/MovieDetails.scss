@@ -1,0 +1,51 @@
+main {
+  height: 79vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.backdrop {
+  height: 79vh;
+  width:100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.detailsContainer {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  height: 60%;
+  background-color: whitesmoke;
+  border: 3px solid #B02AF8;
+  align-items: center;
+  z-index: 2;
+  position: absolute;
+  opacity: 85%;
+}
+
+.txtContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.dateContainer {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+img {
+  width: 40%;
+  height: 95%;
+}
+
+button {
+  align-self: end;
+}
+
