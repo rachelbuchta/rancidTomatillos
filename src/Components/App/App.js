@@ -41,7 +41,12 @@ class App extends Component {
       <div className='App'>
         <Header />
 
-        {this.state.isLoading && <h2>Loading...</h2> }
+        {this.state.isLoading && !this.state.error &&
+        ( <h2 className="userMsg">Loading...</h2> )}
+
+        {this.state.error && (
+          <h2 className="userMsg">{this.state.error}</h2>
+        )}
 
         {!this.state.isLoading && !this.state.currentMovie && (
         <Movies movies={this.state.movies} handleClick={this.handleClick}/>
