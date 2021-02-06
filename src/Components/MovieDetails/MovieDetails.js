@@ -2,7 +2,7 @@ import React from 'react'
 import './MovieDetails.scss'
 
 const MovieDetails = ({currentMovie, exitDetails}) => {
-
+  console.log(currentMovie)
   return (
     <main>
       <img className="backdrop" src={currentMovie.backdrop_path} alt=""/>

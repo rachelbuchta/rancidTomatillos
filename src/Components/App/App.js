@@ -5,7 +5,7 @@ import Movies from '../Movies/Movies'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import MovieDetails from '../MovieDetails/MovieDetails'
-import { getAllMovies } from '../../util'
+import { getAllMovies, getSingleMovie } from '../../util'
 
 class App extends Component {
   constructor() {
@@ -28,8 +28,9 @@ class App extends Component {
   }
 
   handleClick = (id) => {
-    const current = this.state.movies.find(movie => movie.id === id)
-    this.setState({currentMovie: current})
+    const current = this.state.movies.movies.find(movie => movie.id === id)
+    getSingleMovie(current.id)
+      .then(movie => this.setState({currentMovie: movie}))
   }
 
   exitDetails = () => {
@@ -44,11 +45,11 @@ class App extends Component {
         {this.state.isLoading && <h2>Loading...</h2> }
 
         {!this.state.isLoading && !this.state.currentMovie && (
-        <Movies movies={this.state} handleClick={this.handleClick}/>
+        <Movies movies={this.state.movies} handleClick={this.handleClick}/>
         )}
 
         {this.state.currentMovie && (
-        <MovieDetails currentMovie={this.state.currentMovie} exitDetails={this.exitDetails}/>
+        <MovieDetails currentMovie={this.state.currentMovie.movie} exitDetails={this.exitDetails}/>
         )}
 
         <Footer />
@@ -58,23 +59,3 @@ class App extends Component {
 }
 
 export default App;
-//pass handle click  it down to movie
-//once movie is clicked
-//pass back up find the id
-
-//move handleclick
-
-// clear state  to empty string 
-
-// if currentMovie is true
-// this.state.display = movieDetails
-//else
-// this.state.display = allMovies
-
-// if currentMovie === '' {
-//   <Movies />
-// }
-
-// if currentMovie !== '' {
-//   <MovieDetails />
-// }
