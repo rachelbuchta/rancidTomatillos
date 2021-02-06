@@ -1,10 +1,16 @@
 main {
-  background-color: #303030;
   height: 79vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.backdrop {
+  height: 79vh;
+  width:100%;
+  position: absolute;
+  z-index: 1;
 }
 
 .detailsContainer {
@@ -15,6 +21,9 @@ main {
   background-color: whitesmoke;
   border: 3px solid #B02AF8;
   align-items: center;
+  z-index: 2;
+  position: absolute;
+  opacity: 85%;
 }
 
 .txtContainer {

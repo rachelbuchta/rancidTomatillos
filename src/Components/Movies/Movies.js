@@ -6,9 +6,9 @@ const Movies = ({movies, handleClick}) => {
   const movieCards = movies.map(movie => {
     return (
       <Movie 
-        image={movie.backdrop_path}
-        title={movie.title}
-        tagline={movie.tagline}
+        image={movie.poster_path}
+        // title={movie.title}
+        // tagline={movie.tagline}
         id={movie.id}
         key={movie.id}
         handleClick={handleClick}
@@ -17,7 +17,7 @@ const Movies = ({movies, handleClick}) => {
   })
 
     return(
-      <section className="moviesContainer">
+      <section className='moviesContainer'>
         {movieCards}
       </section>
   )

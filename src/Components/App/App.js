@@ -11,25 +11,22 @@ class App extends Component {
     super()
     this.state = { 
       movies: movieData.movies,
-      currentMovie: ""
+      currentMovie: ''
      }
   }
 
   handleClick = (id) => {
     const current = this.state.movies.find(movie => movie.id === id)
-    // console.log(current)
     this.setState({currentMovie: current})
-    console.log(this.state.currentMovie)
   }
 
   exitDetails = () => {
-    console.log("hey")
-    this.setState({currentMovie: ""})
+    this.setState({currentMovie: ''})
   }
 
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <Header />
 
         {!this.state.currentMovie && (
@@ -60,10 +57,10 @@ export default App;
 //else
 // this.state.display = allMovies
 
-// if currentMovie === "" {
+// if currentMovie === '' {
 //   <Movies />
 // }
 
-// if currentMovie !== "" {
+// if currentMovie !== '' {
 //   <MovieDetails />
 // }

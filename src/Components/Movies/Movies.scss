@@ -1,6 +1,19 @@
 .moviesContainer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2em;
+    grid-gap: 2.5em;
     background-color: #303030;
+    padding: 3.5%;
+   
+      :focus,
+      :hover {
+        transform: scale(1);
+        z-index: 1;
+      }
+    
 }
+
+
+
+
+
