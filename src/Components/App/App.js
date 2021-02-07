@@ -31,8 +31,18 @@ class App extends Component {
 
   handleClick = (id) => {
     const current = this.state.movies.movies.find(movie => movie.id === id)
-    getSingleMovie(current.id)
-      .then(movie => this.setState({currentMovie: movie}))
+    this.getSingleMovieData(current.id)
+    // getSingleMovie(current.id)
+    //   .then(movie => this.setState({currentMovie: movie}))
+  }
+
+  getSingleMovieData = (id) => {
+    const selectedMovie = getSingleMovie(id)
+    const selectedMovieVideo = getSingleMovieVideo(id)
+    return Promise.all([selectedMovie, selectedMovieVideo])
+      .then(movie => {
+        this.setState({ currentMovie: [movie[0], movie[1]] })
+      })
   }
 
   exitDetails = () => {
@@ -56,7 +66,7 @@ class App extends Component {
         )}
 
         {this.state.currentMovie && (
-        <MovieDetails currentMovie={this.state.currentMovie.movie} exitDetails={this.exitDetails}/>
+        <MovieDetails currentMovie={this.state.currentMovie} exitDetails={this.exitDetails}/>
         )}
 
         <Footer />
