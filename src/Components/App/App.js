@@ -4,7 +4,7 @@ import Movies from '../Movies/Movies'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import MovieDetails from '../MovieDetails/MovieDetails'
-import { getAllMovies, getSingleMovie } from '../../util'
+import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
 
 class App extends Component {
   constructor() {
@@ -24,7 +24,6 @@ class App extends Component {
         this.setState({ movies: movies, isLoading: false })
       })
       .catch(error => {
-        // console.log(error.status)
         console.log('Movies Request Failed', error)
         this.setState({ error: "Oops! Something went wrong!" })
       })
