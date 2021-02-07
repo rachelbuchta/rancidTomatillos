@@ -13,6 +13,21 @@ main {
   z-index: 1;
 }
 
+.detailsWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 2;
+}
+
+.videoContainer {
+  height: 300px;
+  width: 420px;
+  border: 3px solid red;
+  overflow: scroll;
+}
+
 .detailsContainer {
   display: flex;
   flex-direction: column;
@@ -22,7 +37,7 @@ main {
   background-color: whitesmoke;
   border: 3px solid #B02AF8;
   align-items: center;
-  z-index: 2;
+  // z-index: 2;
   position: absolute;
   opacity: 85%;
 }
@@ -63,11 +78,6 @@ main {
     }
 }
 
-.videoContainer {
-  height: 300px;
-  width: 420px;
-  z-index: 2;
-  border: 3px solid red;
-}
+
 
 

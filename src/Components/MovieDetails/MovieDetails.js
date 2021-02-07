@@ -21,7 +21,8 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
   return (
     <main>
       <img className="backdrop" src={currentMovie[0].movie.backdrop_path} alt=""/>
-        {/* <section className='detailsContainer'>
+      <div className="detailsWrapper">
+        <section className='detailsContainer'>
           <div className="btnWrapper">
             <button onClick={exitDetails}>X</button>
           </div>
@@ -54,11 +55,11 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
             <p>Revenue: {convertToCurrency(currentMovie[0].movie.revenue)}</p>
             } 
           </div>
-        </section> */}
+        </section>
         <div className="videoContainer">
-          <p>Movie Trailers:</p>
           {returnMovieTrailers()}
         </div>
+      </div>
     </main>
   )
 }
