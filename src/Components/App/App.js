@@ -37,9 +37,9 @@ class App extends Component {
   }
 
   getSingleMovieData = (id) => {
-    const selectedMovie = getSingleMovie(id)
-    const selectedMovieVideo = getSingleMovieVideo(id)
-    return Promise.all([selectedMovie, selectedMovieVideo])
+    const selectedMovieDetails = getSingleMovie(id)
+    const selectedMovieVideos = getSingleMovieVideo(id)
+    return Promise.all([selectedMovieDetails, selectedMovieVideos])
       .then(movie => {
         this.setState({ currentMovie: [movie[0], movie[1]] })
       })

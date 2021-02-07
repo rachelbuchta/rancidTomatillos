@@ -4,15 +4,24 @@ import './MovieDetails.scss'
 const MovieDetails = ({currentMovie, exitDetails}) => {
 
   console.log(currentMovie[0])
+  console.log(currentMovie[1])
 
   const convertToCurrency = (num) => {
     return num.toLocaleString('EN-US', {style: 'currency', currency: 'USD'})
+  }
+
+  const returnMovieTrailers = () => {
+    const test =  currentMovie[1].videos.map(video => {
+      console.log(video.key)
+      return <iframe width="420px" height="315px" src={`https://www.youtube.com/embed/${video.key}`} title={currentMovie[0].movie.title}></iframe>
+    })
+    return test
   }
  
   return (
     <main>
       <img className="backdrop" src={currentMovie[0].movie.backdrop_path} alt=""/>
-        <section className='detailsContainer'>
+        {/* <section className='detailsContainer'>
           <div className="btnWrapper">
             <button onClick={exitDetails}>X</button>
           </div>
@@ -45,10 +54,13 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
             <p>Revenue: {convertToCurrency(currentMovie[0].movie.revenue)}</p>
             } 
           </div>
-        </section>
+        </section> */}
+        <div className="videoContainer">
+          <p>Movie Trailers:</p>
+          {returnMovieTrailers()}
+        </div>
     </main>
   )
-  
 }
 
 export default MovieDetails
