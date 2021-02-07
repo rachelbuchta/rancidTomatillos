@@ -3,26 +3,50 @@ import './MovieDetails.scss'
 
 const MovieDetails = ({currentMovie, exitDetails}) => {
 
+  const convertToCurrency = (num) => {
+    return num.toLocaleString('EN-US', {style: 'currency', currency: 'USD'})
+  }
+ 
   return (
     <main>
       <img className="backdrop" src={currentMovie.backdrop_path} alt=""/>
         <section className='detailsContainer'>
-          <div className='txtContainer'>
+          <div className="btnWrapper">
             <button onClick={exitDetails}>X</button>
-            <h1>{currentMovie.title}</h1>
-            <p>This is a movie its probably good but idk its about a 3 on a 5 scale/ Got some characters, its gots a plot, its got an ending.Boom.</p>
-            <div className='dateContainer'>
-              <p>{currentMovie.release_date}</p>
-              <p>{currentMovie.average_rating}</p>
-            </div>
-            <p>Genre: RomCOM</p>
-            <p>Revenue: $1,000,000,000</p>
-            <p>Budget: $40</p>
           </div>
-          <img src={currentMovie.poster_path} alt=''/>
+          <div className='txtContainer'>
+            <h1 className='title'>{currentMovie.title}</h1>
+            <p className='overview'>{currentMovie.overview}</p>
+            <div className='dateContainer'>
+              <p>Release Date: <br/>
+              {currentMovie.release_date} 
+              </p>
+              <p>Average Rating: <br/>
+               {currentMovie.average_rating.toFixed(1)}
+              </p>
+              <p>Runtime: <br/>
+              {currentMovie.runtime} minutes
+              </p>
+            </div>
+
+            {currentMovie.genres.length > 1 ? 
+            <p>Genres: {currentMovie.genres.join(', ')}</p> : 
+            <p>Genre: {currentMovie.genres}</p>}
+
+            {currentMovie.budget === 0 ? 
+            <p>Budget: $0</p> :
+            <p>Budget: {convertToCurrency(currentMovie.budget)}</p>
+            }
+
+            {currentMovie.revenue === 0 ?
+            <p>Revenue: $0</p> :
+            <p>Revenue: {convertToCurrency(currentMovie.revenue)}</p>
+            } 
+          </div>
         </section>
     </main>
   )
+  
 }
 
 export default MovieDetails

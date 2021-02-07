@@ -15,6 +15,7 @@ main {
 
 .detailsContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 70%;
   height: 60%;
@@ -29,23 +30,39 @@ main {
 .txtContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 70%;
+  z-index: 1;
+  height: 100%;
+
+    .title {
+      font-size: 2.5em;
+    }
+
+    .overview {
+      text-align: center;
+    }
 }
 
 .dateContainer {
   display: flex;
+  align-content: center;
   justify-content: space-evenly;
   width: 100%;
+  text-align: center;
 }
 
-img {
-  width: 40%;
-  height: 95%;
+.btnWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  width: 100%;
+  
+    button {
+      align-self: start;
+    }
 }
 
-button {
-  align-self: end;
-}
+
+
 

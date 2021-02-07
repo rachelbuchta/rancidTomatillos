@@ -3,7 +3,7 @@ import './Movies.scss'
 import Movie from '../Movie/Movie'
 
 const Movies = ({movies, handleClick}) => {
-  const movieCards = movies.map(movie => {
+  const movieCards = movies.movies.map(movie => {
     return (
       <Movie 
         image={movie.poster_path}
