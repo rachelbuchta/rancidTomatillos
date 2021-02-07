@@ -18,9 +18,15 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
             <h1 className='title'>{currentMovie.title}</h1>
             <p className='overview'>{currentMovie.overview}</p>
             <div className='dateContainer'>
-              <p>Release Date: {currentMovie.release_date}</p>
-              <p>Average Rating: {currentMovie.average_rating.toFixed(1)}</p>
-              <p>Runtime: {currentMovie.runtime} minutes</p>
+              <p>Release Date: <br/>
+              {currentMovie.release_date} 
+              </p>
+              <p>Average Rating: <br/>
+               {currentMovie.average_rating.toFixed(1)}
+              </p>
+              <p>Runtime: <br/>
+              {currentMovie.runtime} minutes
+              </p>
             </div>
 
             {currentMovie.genres.length > 1 ? 

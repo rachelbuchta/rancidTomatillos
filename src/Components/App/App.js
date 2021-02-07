@@ -19,9 +19,13 @@ class App extends Component {
 
   componentDidMount = () => {
     getAllMovies()     
-      .then(movies => this.setState({ movies: movies, isLoading: false }))
+      .then(movies => {
+        console.log('Movies Request Successful', movies)
+        this.setState({ movies: movies, isLoading: false })
+      })
       .catch(error => {
-        console.log(error)
+        // console.log(error.status)
+        console.log('Movies Request Failed', error)
         this.setState({ error: "Oops! Something went wrong!" })
       })
   }
