@@ -1,6 +1,7 @@
 import React from 'react'
 import './Movies.scss'
 import Movie from '../Movie/Movie'
+import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
 
 const Movies = ({movies, handleClick}) => {
   const movieCards = movies.movies.map(movie => {

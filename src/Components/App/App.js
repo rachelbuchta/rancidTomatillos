@@ -5,6 +5,7 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import MovieDetails from '../MovieDetails/MovieDetails'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
+import { Route } from 'react-router-dom'
 
 class App extends Component {
   constructor() {
@@ -53,6 +54,12 @@ class App extends Component {
     return (
       <div className='App'>
         <Header />
+          {/* <Route exact path="/" 
+            render={() => 
+              <section className='main'>
+                < Movies movies={this.state.movies} handleClick={this.handleClick}/>
+              </section>
+            }/> */}
 
         {this.state.isLoading && !this.state.error &&
         ( <h2 className="userMsg">Loading...</h2> )}
@@ -60,15 +67,18 @@ class App extends Component {
         {this.state.error && (
           <h2 className="userMsg">{this.state.error}</h2>
         )}
-
+        
         {!this.state.isLoading && !this.state.currentMovie && (
         <Movies movies={this.state.movies} handleClick={this.handleClick}/>
         )}
-
+        {/* <Route 
+          exact
+          path='/' 
+          render={() => <Movies movies={this.state.movies} handleClick={this.handleClick}/> } 
+        /> */}
         {this.state.currentMovie && (
         <MovieDetails currentMovie={this.state.currentMovie} exitDetails={this.exitDetails}/>
         )}
-
         <Footer />
       </div>
     )

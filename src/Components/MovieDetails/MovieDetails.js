@@ -13,7 +13,7 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
   const returnMovieTrailers = () => {
     const test =  currentMovie[1].videos.map(video => {
       console.log(video.key)
-      return <iframe width="420px" height="315px" src={`https://www.youtube.com/embed/${video.key}`} title={currentMovie[0].movie.title}></iframe>
+      return <iframe src={`https://www.youtube.com/embed/${video.key}`} title={currentMovie[0].movie.title}></iframe>
     })
     return test
   }
@@ -28,18 +28,18 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
           </div>
           <div className='txtContainer'>
             <h1 className='title'>{currentMovie[0].movie.title}</h1>
-            <p className='overview'>{currentMovie[0].movie.overview}</p>
             <div className='dateContainer'>
-              <p>Release Date: <br/>
+              <p className='bold'>Release Date: <br/>
               {currentMovie[0].movie.release_date} 
               </p>
-              <p>Average Rating: <br/>
+              <p className='bold'>Average Rating: <br/>
                {currentMovie[0].movie.average_rating.toFixed(1)}
               </p>
-              <p>Runtime: <br/>
+              <p className='bold'>Runtime: <br/>
               {currentMovie[0].movie.runtime} minutes
               </p>
             </div>
+            <p className='overview'>{currentMovie[0].movie.overview}</p>
 
             {currentMovie[0].movie.genres.length > 1 ? 
             <p>Genres: {currentMovie[0].movie.genres.join(', ')}</p> : 
