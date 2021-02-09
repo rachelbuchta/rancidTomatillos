@@ -46,18 +46,20 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
             <p className='overview'>{currentMovie[0].movie.overview}</p>
 
             {currentMovie[0].movie.genres.length > 1 ? 
-            <p>Genres: {currentMovie[0].movie.genres.join(', ')}</p> : 
-            <p>Genre: {currentMovie[0].movie.genres}</p>}
+            <p className='genre'>Genres: <br/> {currentMovie[0].movie.genres.join(' | ')}</p> : 
+            <p className='genre'>Genre: <br/> {currentMovie[0].movie.genres}</p>}
 
-            {currentMovie[0].movie.budget === 0 ? 
-            <p>Budget: $0</p> :
-            <p>Budget: {convertToCurrency(currentMovie[0].movie.budget)}</p>
-            }
+            <span>
+              {currentMovie[0].movie.budget === 0 ? 
+              <p className='money'>Budget: <br/> $0</p> :
+              <p className='money'>Budget: <br/> {convertToCurrency(currentMovie[0].movie.budget)}</p>
+              }
 
-            {currentMovie[0].movie.revenue === 0 ?
-            <p>Revenue: $0</p> :
-            <p>Revenue: {convertToCurrency(currentMovie[0].movie.revenue)}</p>
-            } 
+              {currentMovie[0].movie.revenue === 0 ?
+              <p className='money'>Revenue: <br/> $0</p> :
+              <p className='money'>Revenue: <br/> {convertToCurrency(currentMovie[0].movie.revenue)}</p>
+              } 
+            </span>
           </div>
         </section>
         <div className="videoContainer">

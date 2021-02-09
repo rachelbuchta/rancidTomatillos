@@ -66,14 +66,20 @@ main {
   margin-top: -5%;
 
     .title {
-      font-size: 1.8em;
+      font-size: 1.5em;
       margin: 0px;
+      text-align: center;
     }
 
-    .overview {
+    .overview, .genre {
       text-align: center;
-     
     }
+
+ 
+}
+
+.money {
+  text-align: center;
 }
 
 .bold {
