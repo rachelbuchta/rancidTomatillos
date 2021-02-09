@@ -60,22 +60,20 @@ class App extends Component {
                 < Movies movies={this.state.movies} handleClick={this.handleClick}/>
               </section>
             }/> */}
-
+{/* 
         {this.state.isLoading && !this.state.error &&
         ( <h2 className="userMsg">Loading...</h2> )}
 
         {this.state.error && (
           <h2 className="userMsg">{this.state.error}</h2>
-        )}
+        )} */}
         
-        {!this.state.isLoading && !this.state.currentMovie && (
+        {/* {!this.state.isLoading && !this.state.currentMovie && (
         <Movies movies={this.state.movies} handleClick={this.handleClick}/>
+        )} */}
+        {!this.state.isLoading && !this.state.currentMovie && (
+        < Route exact path='/' render={()=> <Movies movies={this.state.movies} handleClick={this.handleClick}/>}/>
         )}
-        {/* <Route 
-          exact
-          path='/' 
-          render={() => <Movies movies={this.state.movies} handleClick={this.handleClick}/> } 
-        /> */}
         {this.state.currentMovie && (
         <MovieDetails currentMovie={this.state.currentMovie} exitDetails={this.exitDetails}/>
         )}
