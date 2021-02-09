@@ -22,7 +22,7 @@ describe('Movie Reelz', () => {
 
   it('Should return to home page view showing all movies when the exit button is clicked', () => {
     cy.get('.movieCard:first').click()
-    cy.get('.detailsContainer').children('.btnWrapper').children('button').click()
+    cy.get('.detailsContainer').children('.btnWrapper').children('.cancelImg').click()
     //check url
   })
 })

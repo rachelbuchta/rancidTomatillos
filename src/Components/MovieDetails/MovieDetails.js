@@ -1,5 +1,7 @@
 import React from 'react'
 import './MovieDetails.scss'
+import X from '../../images/cancel.png'
+import star from '../../images/favourites.png'
 
 const MovieDetails = ({currentMovie, exitDetails}) => {
 
@@ -24,8 +26,9 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
       <div className="detailsWrapper">
         <section className='detailsContainer'>
           <div className="btnWrapper">
-            <button onClick={exitDetails}>X</button>
+            <img onClick={exitDetails} className="cancelImg" src={X} alt="exit-details"/>
           </div>
+          
           <div className='txtContainer'>
             <h1 className='title'>{currentMovie[0].movie.title}</h1>
             <div className='dateContainer'>
@@ -34,6 +37,7 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
               </p>
               <p className='bold'>Average Rating: <br/>
                {currentMovie[0].movie.average_rating.toFixed(1)}
+                <img className="starImg" src={star} alt="exit-details"/>
               </p>
               <p className='bold'>Runtime: <br/>
               {currentMovie[0].movie.runtime} minutes
