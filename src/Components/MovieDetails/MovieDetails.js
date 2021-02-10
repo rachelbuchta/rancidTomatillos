@@ -21,7 +21,7 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
   }
  
   return (
-    <main>
+    <main className='main'>
       <img className="backdrop" src={currentMovie[0].movie.backdrop_path} alt=""/>
       <div className="detailsWrapper">
         <section className='detailsContainer'>
