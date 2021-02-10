@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Movie = ({title, image, tagline, id, getSingleMovieData}) => {
     return (
       <article className="movieCard">
-        <Link to={`/${id}`} onClick={() => getSingleMovieData(id)}>
+        <Link  className="movieLink" to={`/${id}`} onClick={() => getSingleMovieData(id)}>
           <img className="cardImage" src={image} alt="potato"/>
         </Link>
         <h2>{title}</h2>

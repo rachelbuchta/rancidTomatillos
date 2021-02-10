@@ -7,12 +7,16 @@
     position: relative;
 
 
+
+}
+
+.movieLink {
     :hover {
       box-shadow: 3px 3px 4px 4px #B02AF8;
       transform: scale(1.1);
     }
-
 }
+
 
 .cardImage {
   display: block;

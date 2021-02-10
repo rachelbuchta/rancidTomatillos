@@ -23,7 +23,7 @@ class App extends Component {
     getAllMovies()     
       .then(movies => {
         console.log('Movies Request Successful', movies)
-        this.setState({ movies: movies, isLoading: false })
+        this.setState({ movies: movies.movies, isLoading: false })
       })
       .catch(error => {
         console.log('Movies Request Failed', error)

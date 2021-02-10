@@ -4,7 +4,7 @@ import Movie from '../Movie/Movie'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
 
 const Movies = ({movies, getSingleMovieData}) => {
-  const movieCards = movies.movies.map(movie => {
+  const movieCards = movies.map(movie => {
     return (
       <Movie 
         image={movie.poster_path}
