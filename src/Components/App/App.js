@@ -70,7 +70,7 @@ class App extends Component {
              return <MovieDetails currentMovie={this.state.currentMovie} exitDetails={this.exitDetails}/>
            }}/>
         )}
-        
+        < Route component={ReRoute} />
         <Footer />
       </div>
     )

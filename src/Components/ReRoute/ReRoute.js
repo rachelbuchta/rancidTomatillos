@@ -6,7 +6,7 @@ const ReRoute = () => {
     return (
         <div>
             <h1>Excuse me.. are you lost? This place does not exist...</h1>
-            <Link>Back to Home!</Link>
+            <Link to='/'>Back to Home!</Link>
         </div>
     )
 }
