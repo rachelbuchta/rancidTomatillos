@@ -6,7 +6,7 @@ import Footer from '../Footer/Footer'
 import MovieDetails from '../MovieDetails/MovieDetails'
 import ReRoute from '../ReRoute/ReRoute'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 class App extends Component {
   constructor() {
@@ -49,13 +49,13 @@ class App extends Component {
     return (
       <div className='App'>
         <Header />
-
+        <Switch>
         {this.state.isLoading && !this.state.error &&
         ( <h2 className="userMsg">Loading...</h2> )}
 
         {this.state.error && (
           <h2 className="userMsg">{this.state.error}</h2>
-        )} 
+        )}
         
         {!this.state.isLoading && (
         < Route exact path='/' render={()=> <Movies movies={this.state.movies} getSingleMovieData={this.getSingleMovieData}/>}/>
@@ -67,10 +67,12 @@ class App extends Component {
            path='/:id'
            render={ ( { match }) => {
              const { id } = match.params
-             return <MovieDetails currentMovie={this.state.currentMovie} exitDetails={this.exitDetails}/>
+             return <MovieDetails currentMovie={this.state.currentMovie} />
            }}/>
         )}
+
         < Route component={ReRoute} />
+        </Switch>
         <Footer />
       </div>
     )
@@ -78,4 +80,3 @@ class App extends Component {
 }
 
 export default App
-
