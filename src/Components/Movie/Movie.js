@@ -1,13 +1,14 @@
 import React from 'react'
 import './Movie.scss'
+import { Link } from 'react-router-dom'
 
-const Movie = ({title, image, tagline, id, handleClick}) => {
+const Movie = ({title, image, tagline, id, getSingleMovieData}) => {
     return (
       <article className="movieCard">
-        <a href="" className='itemImage'>
-        <img className="cardImage" src={image} onClick={() => handleClick(id)} alt="potato"/></a>
+        <Link to={`/${id}`} onClick={() => getSingleMovieData(id)}>
+          <img className="cardImage" src={image} alt="potato"/>
+        </Link>
         <h2>{title}</h2>
-        {/* <p>{tagline}</p> */}
       </article>
     )
   }

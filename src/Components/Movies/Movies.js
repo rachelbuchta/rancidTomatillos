@@ -3,7 +3,7 @@ import './Movies.scss'
 import Movie from '../Movie/Movie'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
 
-const Movies = ({movies, handleClick}) => {
+const Movies = ({movies, getSingleMovieData}) => {
   const movieCards = movies.movies.map(movie => {
     return (
       <Movie 
@@ -12,7 +12,7 @@ const Movies = ({movies, handleClick}) => {
         // tagline={movie.tagline}
         id={movie.id}
         key={movie.id}
-        handleClick={handleClick}
+        getSingleMovieData={getSingleMovieData}
       />
     )
   })

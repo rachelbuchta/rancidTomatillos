@@ -5,8 +5,8 @@ import star from '../../images/favourites.png'
 
 const MovieDetails = ({currentMovie, exitDetails}) => {
 
-  console.log(currentMovie[0])
-  console.log(currentMovie[1])
+  console.log("movieDetails",currentMovie)
+  // console.log(currentMovie[1])
 
   const convertToCurrency = (num) => {
     return num.toLocaleString('EN-US', {style: 'currency', currency: 'USD'})
@@ -14,7 +14,6 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
 
   const returnMovieTrailers = () => {
     const test =  currentMovie[1].videos.map(video => {
-      console.log(video.key)
       return <iframe src={`https://www.youtube.com/embed/${video.key}`} title={currentMovie[0].movie.title}></iframe>
     })
     return test
@@ -64,7 +63,7 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
         </section>
         <div className="videoContainer">
           {returnMovieTrailers()}
-        </div>
+        </div> 
       </div>
     </main>
   )

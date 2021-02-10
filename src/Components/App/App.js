@@ -30,13 +30,6 @@ class App extends Component {
       })
   }
 
-  handleClick = (id) => {
-    const current = this.state.movies.movies.find(movie => movie.id === id)
-    this.getSingleMovieData(current.id)
-    // getSingleMovie(current.id)
-    //   .then(movie => this.setState({currentMovie: movie}))
-  }
-
   getSingleMovieData = (id) => {
     const selectedMovieDetails = getSingleMovie(id)
     const selectedMovieVideos = getSingleMovieVideo(id)
@@ -44,6 +37,7 @@ class App extends Component {
       .then(movie => {
         this.setState({ currentMovie: [movie[0], movie[1]] })
       })
+      .then(() => console.log("fetch:",this.state.currentMovie))
   }
 
   exitDetails = () => {
@@ -54,28 +48,26 @@ class App extends Component {
     return (
       <div className='App'>
         <Header />
-          {/* <Route exact path="/" 
-            render={() => 
-              <section className='main'>
-                < Movies movies={this.state.movies} handleClick={this.handleClick}/>
-              </section>
-            }/> */}
-{/* 
+
         {this.state.isLoading && !this.state.error &&
         ( <h2 className="userMsg">Loading...</h2> )}
 
         {this.state.error && (
           <h2 className="userMsg">{this.state.error}</h2>
-        )} */}
+        )} 
         
-        {/* {!this.state.isLoading && !this.state.currentMovie && (
-        <Movies movies={this.state.movies} handleClick={this.handleClick}/>
-        )} */}
         {!this.state.isLoading && !this.state.currentMovie && (
-        < Route exact path='/' render={()=> <Movies movies={this.state.movies} handleClick={this.handleClick}/>}/>
+        < Route exact path='/' render={()=> <Movies movies={this.state.movies} getSingleMovieData={this.getSingleMovieData}/>}/>
         )}
+
         {this.state.currentMovie && (
-        <MovieDetails currentMovie={this.state.currentMovie} exitDetails={this.exitDetails}/>
+        < Route 
+           exact
+           path='/:id'
+           render={ ( { match }) => {
+             const { id } = match.params
+             return <MovieDetails currentMovie={this.state.currentMovie} exitDetails={this.exitDetails}/>
+           }}/>
         )}
         <Footer />
       </div>
@@ -83,4 +75,5 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
+
