@@ -4,6 +4,7 @@ import Movies from '../Movies/Movies'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import MovieDetails from '../MovieDetails/MovieDetails'
+import ReRoute from '../ReRoute/ReRoute'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
 import { Route } from 'react-router-dom'
 
