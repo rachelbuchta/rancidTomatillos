@@ -2,6 +2,7 @@ import React from 'react'
 import './MovieDetails.scss'
 import X from '../../images/cancel.png'
 import star from '../../images/favourites.png'
+import { Link } from 'react-router-dom'
 
 const MovieDetails = ({currentMovie, exitDetails}) => {
 
@@ -25,7 +26,9 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
       <div className="detailsWrapper">
         <section className='detailsContainer'>
           <div className="btnWrapper">
-            <img onClick={exitDetails} className="cancelImg" src={X} alt="exit-details"/>
+            <Link to="/">
+              <img className="cancelImg" src={X} alt="exit-details"/>
+            </Link>
           </div>
           
           <div className='txtContainer'>

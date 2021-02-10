@@ -56,7 +56,7 @@ class App extends Component {
           <h2 className="userMsg">{this.state.error}</h2>
         )} 
         
-        {!this.state.isLoading && !this.state.currentMovie && (
+        {!this.state.isLoading && (
         < Route exact path='/' render={()=> <Movies movies={this.state.movies} getSingleMovieData={this.getSingleMovieData}/>}/>
         )}
 
