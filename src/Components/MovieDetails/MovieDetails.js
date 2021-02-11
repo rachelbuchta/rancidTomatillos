@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const MovieDetails = ({currentMovie, exitDetails}) => {
 
-  console.log("movieDetails",currentMovie)
+  console.log('movieDetails',currentMovie)
   // console.log(currentMovie[1])
 
   const convertToCurrency = (num) => {
@@ -15,19 +15,19 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
 
   const returnMovieTrailers = () => {
     const test =  currentMovie[1].videos.map(video => {
-      return <iframe src={`https://www.youtube.com/embed/${video.key}`} title={currentMovie[0].movie.title}></iframe>
+      return <iframe src={`https://www.youtube.com/embed/${video.key}`} title={currentMovie[0].movie.title} key={currentMovie[0].movie.id}></iframe>
     })
     return test
   }
  
   return (
     <main className='main'>
-      <img className="backdrop" src={currentMovie[0].movie.backdrop_path} alt=""/>
-      <div className="detailsWrapper">
+      <img className='backdrop' src={currentMovie[0].movie.backdrop_path} alt={`${currentMovie[0].movie.title} image`}/>
+      <div className='detailsWrapper'>
         <section className='detailsContainer'>
-          <div className="btnWrapper">
-            <Link to="/">
-              <img className="cancelImg" src={X} alt="exit-details"/>
+          <div className='btnWrapper'>
+            <Link to='/'>
+              <img className='cancelImg' src={X} alt='exit-details'/>
             </Link>
           </div>
           
@@ -39,7 +39,7 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
               </p>
               <p className='bold'>Average Rating: <br/>
                {currentMovie[0].movie.average_rating.toFixed(1)}
-                <img className="starImg" src={star} alt="exit-details"/>
+                <img className='starImg' src={star} alt='star-icon'/>
               </p>
               <p className='bold'>Runtime: <br/>
               {currentMovie[0].movie.runtime} minutes
@@ -64,7 +64,7 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
             </span>
           </div>
         </section>
-        <div className="videoContainer">
+        <div className='videoContainer'>
           {returnMovieTrailers()}
         </div> 
       </div>

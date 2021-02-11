@@ -27,7 +27,7 @@ class App extends Component {
       })
       .catch(error => {
         console.log('Movies Request Failed', error)
-        this.setState({ error: "Oops! Something went wrong!" })
+        this.setState({ error: 'Oops! Something went wrong!' })
       })
   }
 
@@ -38,7 +38,7 @@ class App extends Component {
       .then(movie => {
         this.setState({ currentMovie: [movie[0], movie[1]] })
       })
-      .then(() => console.log("fetch:",this.state.currentMovie))
+      .then(() => console.log('fetch:',this.state.currentMovie))
   }
 
   exitDetails = () => {
@@ -51,10 +51,10 @@ class App extends Component {
         <Header />
         <Switch>
         {this.state.isLoading && !this.state.error &&
-        ( <h2 className="userMsg">Loading...</h2> )}
+        ( <h2 className='userMsg'>Loading...</h2> )}
 
         {this.state.error && (
-          <h2 className="userMsg">{this.state.error}</h2>
+          <h2 className='userMsg'>{this.state.error}</h2>
         )}
         
         {!this.state.isLoading && (
