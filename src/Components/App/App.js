@@ -71,7 +71,7 @@ class App extends Component {
            }}/>
         )}
 
-        < Route component={ReRoute} />
+        {/* < Route component={ReRoute} /> */}
         </Switch>
         <Footer />
       </div>

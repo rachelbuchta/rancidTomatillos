@@ -3,31 +3,38 @@ beforeEach(() => {
 
 
 
-  cy.fixture('movieData.json')
-    .then((movies) => {
-      cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
-        statusCode: 201,
-        body: movies.movies
-      })
-    })
 })
 
 describe('Movie Reelz', () => {
+
   it('Should be able to visit the page and render all movies', () => {
-    cy
-      .get('.moviesContainer').children('.movieCard');
-      cy.url().should('include', '/')
+    cy.fixture('movieData.json')
+      .then((movies) => {
+        cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+          statusCode: 201,
+          body: movies.movies
+        })
+      })
+        .get('.moviesContainer').children('.movieCard');
+        cy.url().should('include', '/')
   })
 
-  it('Should be able to click a single movie, all movies disapear and are navigated to a new page that displays that single movies details and trailer', () => {
+  it.only('Should be able to click a single movie, all movies disapear and are navigated to a new page that displays that single movies details and trailer', () => {
     cy.get('.movieCard:first').click()
     cy.fixture('movieData.json')
     .then((movies) => {
       cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919', {
         statusCode: 201,
-        body: movies.movies
+        body: movies.movie
       })
     })
+    .then((videos) => {
+       cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919/videos', {
+        statusCode: 201,
+        body: videos
+      })
+    })
+      cy.get('.main').children('.backdrop')
       cy.url().should('include', '694919')
   })
 
