@@ -23,7 +23,7 @@ class App extends Component {
     getAllMovies()     
       .then(movies => {
         console.log('Movies Request Successful', movies)
-        this.setState({ movies: movies })
+        this.setState({ movies: movies, isLoading: false })
       })
       .catch(error => {
         console.log('Movies Request Failed', error)
@@ -38,6 +38,7 @@ class App extends Component {
   // }
 
   getSingleMovieData = (id) => {
+    this.setState({ isLoading: true })
     const selectedMovieDetails = getSingleMovie(id)
     const selectedMovieVideos = getSingleMovieVideo(id)
     return Promise.all([selectedMovieDetails, selectedMovieVideos])
@@ -58,10 +59,8 @@ class App extends Component {
         {this.state.error && (
           <h2 className="userMsg">{this.state.error}</h2>
         )} */}
-
-      
         
-        < Route exact path='/' render={()=> <Movies movies={this.state.movies} getSingleMovieData={this.getSingleMovieData}/>}/>
+        < Route exact path='/' render={()=> <Movies movies={this.state.movies} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading}/>}/>
 
         < Route 
            exact
@@ -71,7 +70,7 @@ class App extends Component {
              return <MovieDetails currentMovie={this.state.currentMovie} isLoading={this.state.isLoading} />
            }}/>
 
-        < Route path='*' component={ReRoute} />
+        < Route component={ReRoute} />
         </Switch>
         <Footer />
       </div>

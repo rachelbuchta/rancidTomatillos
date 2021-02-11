@@ -11,15 +11,12 @@ const MovieDetails = ({currentMovie, exitDetails, isLoading}) => {
   }
 
   const returnMovieTrailers = () => {
-    const test =  currentMovie[1].videos.map(video => {
+    return currentMovie[1].videos.map(video => {
       return <iframe src={`https://www.youtube.com/embed/${video.key}`} title={currentMovie[0].movie.title}></iframe>
     })
-    return test
   }
-
-  console.log("currentMovie:", currentMovie)
   
-  return ( isLoading === true ? <h2>Sorryyyy, we're loadingggg</h2> : 
+  return ( isLoading ? <h2 className="loadingScreen">Sorryyyy, we're loadingggg</h2> : 
     <main>
       <img className="backdrop" src={currentMovie[0].movie.backdrop_path} alt=""/>
       <div className="detailsWrapper">
