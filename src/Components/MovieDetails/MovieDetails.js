@@ -1,52 +1,76 @@
 import React from 'react'
 import './MovieDetails.scss'
+import X from '../../images/cancel.png'
+import star from '../../images/favourites.png'
+import { Link } from 'react-router-dom'
 
-const MovieDetails = ({currentMovie, exitDetails}) => {
+const MovieDetails = ({currentMovie, isLoading}) => {
 
   const convertToCurrency = (num) => {
     return num.toLocaleString('EN-US', {style: 'currency', currency: 'USD'})
   }
- 
-  return (
-    <main>
-      <img className="backdrop" src={currentMovie.backdrop_path} alt=""/>
+
+  const returnMovieTrailers = () => {
+    return currentMovie[1].videos.map(video => {
+      return <iframe src={`https://www.youtube.com/embed/${video.key}`} title={currentMovie[0].movie.title} key={currentMovie[0].movie.id}></iframe>
+
+    })
+  }
+  
+  return ( 
+    isLoading 
+    ? 
+    <div className="loadingScreen"><h2>Loading...</h2></div> 
+    : 
+    <main className='main'>
+      <img className="backdrop" src={currentMovie[0].movie.backdrop_path} alt={`${currentMovie[0].movie.title} image`}/>
+      <div className="detailsWrapper">
         <section className='detailsContainer'>
-          <div className="btnWrapper">
-            <button onClick={exitDetails}>X</button>
+          <div className='btnWrapper'>
+            <Link to='/'>
+              <img className='cancelImg' src={X} alt='exit-details'/>
+            </Link>
           </div>
+          
           <div className='txtContainer'>
-            <h1 className='title'>{currentMovie.title}</h1>
-            <p className='overview'>{currentMovie.overview}</p>
+            <h1 className='title'>{currentMovie[0].movie.title}</h1>
             <div className='dateContainer'>
-              <p>Release Date: <br/>
-              {currentMovie.release_date} 
+              <p className='bold'>Release Date: <br/>
+              {currentMovie[0].movie.release_date} 
               </p>
-              <p>Average Rating: <br/>
-               {currentMovie.average_rating.toFixed(1)}
+              <p className='bold'>Average Rating: <br/>
+               {currentMovie[0].movie.average_rating.toFixed(1)}
+                <img className='starImg' src={star} alt='star-icon'/>
               </p>
-              <p>Runtime: <br/>
-              {currentMovie.runtime} minutes
+              <p className='bold'>Runtime: <br/>
+              {currentMovie[0].movie.runtime} minutes
               </p>
             </div>
+            <p className='overview'>{currentMovie[0].movie.overview}</p>
 
-            {currentMovie.genres.length > 1 ? 
-            <p>Genres: {currentMovie.genres.join(', ')}</p> : 
-            <p>Genre: {currentMovie.genres}</p>}
+            {currentMovie[0].movie.genres.length > 1 ? 
+            <p className='genre'>Genres: <br/> {currentMovie[0].movie.genres.join(' | ')}</p> : 
+            <p className='genre'>Genre: <br/> {currentMovie[0].movie.genres}</p>}
 
-            {currentMovie.budget === 0 ? 
-            <p>Budget: $0</p> :
-            <p>Budget: {convertToCurrency(currentMovie.budget)}</p>
-            }
+            <span>
+              {currentMovie[0].movie.budget === 0 ? 
+              <p className='money'>Budget: <br/> $0</p> :
+              <p className='money'>Budget: <br/> {convertToCurrency(currentMovie[0].movie.budget)}</p>
+              }
 
-            {currentMovie.revenue === 0 ?
-            <p>Revenue: $0</p> :
-            <p>Revenue: {convertToCurrency(currentMovie.revenue)}</p>
-            } 
+              {currentMovie[0].movie.revenue === 0 ?
+              <p className='money'>Revenue: <br/> $0</p> :
+              <p className='money'>Revenue: <br/> {convertToCurrency(currentMovie[0].movie.revenue)}</p>
+              } 
+            </span>
           </div>
         </section>
+        <div className='videoContainer'>
+          {returnMovieTrailers()}
+        </div> 
+      </div>
     </main>
   )
-  
 }
 
 export default MovieDetails

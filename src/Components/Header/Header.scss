@@ -1,22 +1,24 @@
 header {
-    height: 15vh;
+    height: 18vh;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 7fr;
-    background-color: #1C1F2A;
+    background-color: #212529;
+    border-bottom: 1px solid #B02AF8;
+    background-image: linear-gradient(#212529, #495057);
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
-    border-bottom: 3px solid #B02AF8;
-
-    h1 {
-        font-size: xx-large;
-        color: #B02AF8;
-        justify-content: flex-end;
-    }
-    .headerImg {
-        height: 100px;
-        width: 100px;
-        justify-content: flex-start;
-        margin-left: 35%;
-    }
 }
 
+h1 {
+    font-size: 3.7em;
+    font-weight: lighter;
+    color: #B02AF8;
+    margin: 0%;
+    margin-left: 3%;
+}
+
+.headerImg {
+    height: 100%;
+    width: 100px;
+    margin-left: 35%;
+}

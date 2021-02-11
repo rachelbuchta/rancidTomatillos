@@ -4,13 +4,15 @@ import Movies from '../Movies/Movies'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import MovieDetails from '../MovieDetails/MovieDetails'
+import ReRoute from '../ReRoute/ReRoute'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
+import { Route, Switch } from 'react-router-dom'
 
 class App extends Component {
   constructor() {
     super()
     this.state = { 
-      movies: [],
+      movies: {movies: []},
       currentMovie: '',
       error: '',
       isLoading: true
@@ -21,48 +23,63 @@ class App extends Component {
     getAllMovies()     
       .then(movies => {
         console.log('Movies Request Successful', movies)
-        this.setState({ movies: movies, isLoading: false })
+        this.setState({ movies: movies.movies, isLoading: false })
       })
       .catch(error => {
         console.log('Movies Request Failed', error)
-        this.setState({ error: "Oops! Something went wrong!" })
+        this.setState({ error: 'Oops! Something went wrong!' })
       })
   }
 
-  handleClick = (id) => {
-    const current = this.state.movies.movies.find(movie => movie.id === id)
-    getSingleMovie(current.id)
-      .then(movie => this.setState({currentMovie: movie}))
-  }
+  // componentDidUpdate = () => {
+  //   if (this.state.currentMovie && this.state.isLoading) {
+  //     this.setState({ isLoading: false })
+  //   }
+  // }
 
-  exitDetails = () => {
-    this.setState({currentMovie: ''})
+  getSingleMovieData = (id) => {
+    this.setState({ isLoading: true })
+    const selectedMovieDetails = getSingleMovie(id)
+    const selectedMovieVideos = getSingleMovieVideo(id)
+    return Promise.all([selectedMovieDetails, selectedMovieVideos])
+      .then(movie => {
+        this.setState({ currentMovie: [movie[0], movie[1]], isLoading: false })
+      })
+      .then(() => console.log('fetch:',this.state.currentMovie))
   }
 
   render() {
     return (
       <div className='App'>
         <Header />
-
-        {this.state.isLoading && !this.state.error &&
-        ( <h2 className="userMsg">Loading...</h2> )}
+        <Switch>
+        {/* {this.state.isLoading && !this.state.error &&
+        ( <h2 className="userMsg">Loading...</h2> )} */}
 
         {this.state.error && (
           <h2 className="userMsg">{this.state.error}</h2>
         )}
 
-        {!this.state.isLoading && !this.state.currentMovie && (
-        <Movies movies={this.state.movies} handleClick={this.handleClick}/>
-        )}
+        
+        < Route 
+          exact
+          path='/' 
+          render={()=> <Movies movies={this.state.movies} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading}/>}/>
 
-        {this.state.currentMovie && (
-        <MovieDetails currentMovie={this.state.currentMovie.movie} exitDetails={this.exitDetails}/>
-        )}
+        < Route 
+           exact
+           path='/:id'
+           render={ ( { match }) => {
+             const { id } = match.params
+             return <MovieDetails currentMovie={this.state.currentMovie} isLoading={this.state.isLoading} />
+           }}/>
 
+        {/* < Route component={ReRoute} /> */}
+        </Switch>
         <Footer />
       </div>
     )
   }
 }
 
-export default App;
+export default App
