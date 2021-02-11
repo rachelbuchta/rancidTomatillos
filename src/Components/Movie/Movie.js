@@ -13,8 +13,4 @@ const Movie = ({title, image, id, getSingleMovieData}) => {
     )
   }
 
-
-
-export default Movie
-
-  
+export default Movie  
