@@ -45,11 +45,13 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
               {currentMovie[0].movie.runtime} minutes
               </p>
             </div>
+            {/* {currentMovie[0].movie.genres.length > 1 ?  */}
+            <p className='genre'>{currentMovie[0].movie.genres.join(' | ')}</p> 
+             
+             {/* : <p className='genre'>Genre: <br/> {currentMovie[0].movie.genres}</p>} */}
+            
             <p className='overview'>{currentMovie[0].movie.overview}</p>
 
-            {currentMovie[0].movie.genres.length > 1 ? 
-            <p className='genre'>Genres: <br/> {currentMovie[0].movie.genres.join(' | ')}</p> : 
-            <p className='genre'>Genre: <br/> {currentMovie[0].movie.genres}</p>}
 
             <span>
               {currentMovie[0].movie.budget === 0 ? 

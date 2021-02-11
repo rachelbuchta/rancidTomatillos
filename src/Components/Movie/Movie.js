@@ -23,7 +23,7 @@ const Movie = ({average_rating,title, image, id, getSingleMovieData}) => {
             <img className='cardImage' src={image} alt={title}/>
           </Link>
         </article>
-          <p>
+          <p className='stars'>
           {starCount()}
           </p>
       </section>
