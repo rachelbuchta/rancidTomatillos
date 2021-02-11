@@ -4,10 +4,7 @@ import X from '../../images/cancel.png'
 import star from '../../images/favourites.png'
 import { Link } from 'react-router-dom'
 
-const MovieDetails = ({currentMovie, exitDetails}) => {
-
-  console.log("movieDetails",currentMovie)
-  // console.log(currentMovie[1])
+const MovieDetails = ({currentMovie, exitDetails, isLoading}) => {
 
   const convertToCurrency = (num) => {
     return num.toLocaleString('EN-US', {style: 'currency', currency: 'USD'})
@@ -19,8 +16,10 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
     })
     return test
   }
- 
-  return (
+
+  console.log("currentMovie:", currentMovie)
+  
+  return ( isLoading === true ? <h2>Sorryyyy, we're loadingggg</h2> : 
     <main>
       <img className="backdrop" src={currentMovie[0].movie.backdrop_path} alt=""/>
       <div className="detailsWrapper">

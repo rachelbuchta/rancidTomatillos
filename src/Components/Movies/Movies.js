@@ -4,6 +4,7 @@ import Movie from '../Movie/Movie'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
 
 const Movies = ({movies, getSingleMovieData}) => {
+  
   const movieCards = movies.movies.map(movie => {
     return (
       <Movie 
@@ -25,3 +26,5 @@ const Movies = ({movies, getSingleMovieData}) => {
 }
 
 export default Movies
+
+// send down isLoading as prop and use in conditional for Movies
