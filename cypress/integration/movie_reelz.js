@@ -51,7 +51,7 @@ describe('Movie Reelz', () => {
 
   it('Should return to the home page when the header ticket logo is clicked', () => {
     cy
-      .get('.headerLink').children('').click()
+      .get('.headerLink').children('.headerImg').click()
       cy.url().should('include', '/')
   })
 
