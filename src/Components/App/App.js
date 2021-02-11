@@ -54,11 +54,11 @@ class App extends Component {
         <Header />
         <Switch>
         {/* {this.state.isLoading && !this.state.error &&
-        ( <h2 className="userMsg">Loading...</h2> )}
+        ( <h2 className="userMsg">Loading...</h2> )} */}
 
         {this.state.error && (
           <h2 className="userMsg">{this.state.error}</h2>
-        )} */}
+        )}
 
         
         < Route 
