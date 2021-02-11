@@ -5,7 +5,7 @@ import Movie from '../Movie/Movie'
 const Movies = ({movies, getSingleMovieData, isLoading}) => {
 
   if (isLoading) {
-    return (<h2>Loading.....</h2>)
+    return (<h2 className="loadingScreen">Loading...</h2>)
   } else {
     const movieCards = movies.movies.map(movie => {
       return (

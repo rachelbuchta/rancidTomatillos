@@ -16,7 +16,7 @@ const MovieDetails = ({currentMovie, exitDetails, isLoading}) => {
     })
   }
   
-  return ( isLoading ? <h2 className="loadingScreen">Sorryyyy, we're loadingggg</h2> : 
+  return ( isLoading ? <div className="loadingScreen"><h2>Loading...</h2></div> : 
     <main>
       <img className="backdrop" src={currentMovie[0].movie.backdrop_path} alt=""/>
       <div className="detailsWrapper">

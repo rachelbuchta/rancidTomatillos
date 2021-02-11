@@ -2,7 +2,7 @@ import React from 'react'
 import './Movie.scss'
 import { Link } from 'react-router-dom'
 
-const Movie = ({title, image, tagline, id, getSingleMovieData}) => {
+const Movie = ({title, image, id, getSingleMovieData}) => {
     return (
       <article className="movieCard">
         <Link to={`/${id}`} onClick={() => getSingleMovieData(id)}>
@@ -13,8 +13,4 @@ const Movie = ({title, image, tagline, id, getSingleMovieData}) => {
     )
   }
 
-
-
-export default Movie
-
-  
+export default Movie  
