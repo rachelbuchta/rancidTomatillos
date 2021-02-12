@@ -51,6 +51,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   width: 90%;
   z-index: 1;
   height: 90%;
@@ -61,17 +62,26 @@ main {
       font-size: 1.5em;
       margin: 0px;
       text-align: center;
+      color: white;
     }
 
     .overview, .genre {
       text-align: center;
     }
 
+
     .movieMoney {
       width: 100%;
       display: flex;
       justify-content: space-evenly;
     }
+
+
+    .genre {
+      justify-content: space-around;
+      margin:1%;
+    }
+
 }
 
 .money {
