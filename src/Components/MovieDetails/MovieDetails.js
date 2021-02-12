@@ -4,11 +4,8 @@ import X from '../../images/cancel.png'
 import star from '../../images/favourites.png'
 import { Link } from 'react-router-dom'
 
-const MovieDetails = ({currentMovie, exitDetails}) => {
-
-  console.log('movieDetails',currentMovie[0])
-  // console.log(currentMovie[1])
-
+const MovieDetails = ({currentMovie}) => {
+  
   const convertToCurrency = (num) => {
     return num.toLocaleString('EN-US', {style: 'currency', currency: 'USD'})
   }
@@ -46,15 +43,12 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
               {currentMovie[0].runtime} minutes
               </p>
             </div>
-            {/* {currentMovie[0].movie.genres.length > 1 ?  */}
+        
             <p className='genre'>{currentMovie[0].genres.join(' | ')}</p> 
-             
-             {/* : <p className='genre'>Genre: <br/> {currentMovie[0].movie.genres}</p>} */}
             
             <p className='overview'>{currentMovie[0].overview}</p>
 
-
-            <span>
+            
               {currentMovie[0].budget === 0 ? 
               <p className='money'>Budget: <br/> $0</p> :
               <p className='money'>Budget: <br/> {convertToCurrency(currentMovie[0].budget)}</p>
@@ -64,7 +58,7 @@ const MovieDetails = ({currentMovie, exitDetails}) => {
               <p className='money'>Revenue: <br/> $0</p> :
               <p className='money'>Revenue: <br/> {convertToCurrency(currentMovie[0].revenue)}</p>
               } 
-            </span>
+            
           </div>
         </section>
         <div className='videoContainer'>

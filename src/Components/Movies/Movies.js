@@ -12,7 +12,6 @@ const Movies = ({movies, getSingleMovieData}) => {
         average_rating={movie.average_rating}
         id={movie.id}
         key={movie.id}
-        // starCount={starCount}
         getSingleMovieData={getSingleMovieData}
       />
     )
