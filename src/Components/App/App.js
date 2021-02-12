@@ -15,20 +15,30 @@ class App extends Component {
     this.state = { 
       movies: [],
       currentMovie: '',
+      errorStatus: '',
       error: '',
       isLoading: true
      }
   }
 
   componentDidMount = () => {
-    getAllMovies()     
-      .then(movies => {
+    let responseStatus
+
+    getAllMovies()
+      .then(response => {
+        responseStatus = response.status
+        console.log('good',responseStatus)
+        return response.json()
+      })
+      .then((movies) => {
         console.log('Movies Request Successful', movies)
         this.setState({ movies: movies.movies, isLoading: false })
       })
       .catch(error => {
         console.log('Movies Request Failed', error)
-        this.setState({ error: 'Oops! Something went wrong!' })
+        this.setState({ error: error, errorStatus: responseStatus })
+        console.log(this.state.errorStatus)
+        console.log('bad', responseStatus)
       })
   }
 
@@ -55,7 +65,7 @@ class App extends Component {
         ( <h2 className='userMsg'>Loading...</h2> )} */}
 
         {this.state.error && (
-          <Error />
+          <Error error={this.state.error} errorStatus={this.state.errorStatus}/>
         )}
         
         {!this.state.isLoading && (
