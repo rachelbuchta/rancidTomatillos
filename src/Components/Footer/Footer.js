@@ -3,7 +3,10 @@ import './Footer.scss'
 
 const Footer = () => {
     return (
-        <footer>Contact Info: BLEH</footer>
+        <footer>
+            <p>55 Hollywood Ave, Denver, CO</p>
+            <p>Get Real About Your Reelz</p>
+        </footer>
     )
 }
 

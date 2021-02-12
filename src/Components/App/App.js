@@ -7,7 +7,7 @@ import MovieDetails from '../MovieDetails/MovieDetails'
 import Error from '../Error/Error'
 import ReRoute from '../ReRoute/ReRoute'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 
 class App extends Component {
   constructor() {
@@ -88,8 +88,6 @@ class App extends Component {
              const { id } = match.params
              return <MovieDetails currentMovie={this.state.currentMovie} isLoading={this.state.isLoading} />
            }}/>
-
-        {/* < Route component={ReRoute} /> */}
         </Switch>
         <Footer />
       </div>

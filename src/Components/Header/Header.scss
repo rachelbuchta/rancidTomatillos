@@ -13,12 +13,14 @@ h1 {
     font-size: 3.7em;
     font-weight: lighter;
     color: #B02AF8;
-    margin: 0%;
-    margin-left: 3%;
+}
+
+.headerLink {
+    display: flex;
+    justify-content: center;
+    width: 100px;
 }
 
 .headerImg {
-    height: 100%;
-    width: 100px;
-    margin-left: 35%;
+    width: 75%;
 }

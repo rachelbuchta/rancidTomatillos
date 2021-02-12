@@ -12,10 +12,10 @@ const MovieDetails = ({currentMovie, isLoading}) => {
   }
 
   const returnMovieTrailers = () => {
- return currentMovie[1].map(video => {
-      return <iframe src={`https://www.youtube.com/embed/${video.key}`} title={video.title} key={video.id}></iframe>
-    })
-  }
+    return currentMovie[1].map(video => {
+       return <iframe src={`https://www.youtube.com/embed/${video.key}`} title={video.title} key={video.id}></iframe>
+     })
+   }
   
   return ( 
     isLoading 
@@ -52,9 +52,9 @@ const MovieDetails = ({currentMovie, isLoading}) => {
             <p className='genre'>{currentMovie[0].genres.join(' | ')}</p> 
             
             <p className='overview'>{currentMovie[0].overview}</p>
-
             
               {currentMovie[0].budget === 0 ? 
+
               <p className='money'>Budget: <br/> $0</p> :
               <p className='money'>Budget: <br/> {convertToCurrency(currentMovie[0].budget)}</p>
               }
@@ -66,9 +66,11 @@ const MovieDetails = ({currentMovie, isLoading}) => {
             
           </div>
         </section>
+        {currentMovie[1].videos.length ? 
         <div className='videoContainer'>
           {returnMovieTrailers()}
-        </div> 
+        </div> :
+        <></>}
       </div>
     </main>
   )
