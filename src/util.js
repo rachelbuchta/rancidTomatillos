@@ -1,7 +1,6 @@
 export const getAllMovies = () => {
 return fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')  
   .then(response => { 
-      console.log(response.status)                  
       if(!response.ok) {
         throw new Error('Something went wrong.');
       } else if (response.status === 500) {

@@ -52,7 +52,7 @@ const MovieDetails = ({currentMovie, isLoading}) => {
             <p className='genre'>Genres: <br/> {currentMovie[0].movie.genres.join(' | ')}</p> : 
             <p className='genre'>Genre: <br/> {currentMovie[0].movie.genres}</p>}
 
-            <span>
+            <span className="movieMoney">
               {currentMovie[0].movie.budget === 0 ? 
               <p className='money'>Budget: <br/> $0</p> :
               <p className='money'>Budget: <br/> {convertToCurrency(currentMovie[0].movie.budget)}</p>

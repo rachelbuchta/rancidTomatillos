@@ -2,8 +2,9 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2.5em;
+    justify-items: center;
     background-color: #212529;
-    background-image: linear-gradient(#212529, #6c757d);
+    background-image: linear-gradient(#212529, #6c757d, #212529);
     padding: 3.5%;
    
       :focus,
@@ -11,10 +12,24 @@
         transform: scale(1);
         z-index: 1;
       }
-    
 }
 
+@media screen and (max-width: 900px) {
+  .moviesContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
+@media screen and (max-width: 650px) {
+  .moviesContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
+@media screen and (max-width: 430px) {
+  .moviesContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 
 
