@@ -133,9 +133,11 @@ main {
     position: absolute;
     z-index: 2;
     width: 100%;
+    text-align: center;
   }
   .detailsWrapper {
     flex-direction: column;
+    min-height: 79vh;
   }
   .detailsContainer {
     width: 90%;
@@ -154,6 +156,13 @@ main {
   }
 }
 
-
-
-
+@media screen and (max-width: 475px) {
+  .dateContainer,
+  .movieMoney,
+  footer {
+    flex-direction: column;
+  }
+  footer p {
+    margin: 0%;
+  }
+}

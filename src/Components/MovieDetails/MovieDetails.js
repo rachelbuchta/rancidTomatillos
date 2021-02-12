@@ -11,10 +11,9 @@ const MovieDetails = ({currentMovie, isLoading}) => {
   }
 
   const returnMovieTrailers = () => {
-    return currentMovie[1].videos.map(video => {
-      return <iframe src={`https://www.youtube.com/embed/${video.key}`} title={currentMovie[0].movie.title} key={currentMovie[0].movie.id}></iframe>
-
-    })
+      return currentMovie[1].videos.map(video => {
+        return <iframe src={`https://www.youtube.com/embed/${video.key}`} title={currentMovie[0].movie.title} key={currentMovie[0].movie.id}></iframe>
+      })
   }
   
   return ( 
@@ -65,9 +64,11 @@ const MovieDetails = ({currentMovie, isLoading}) => {
             </span>
           </div>
         </section>
+        {currentMovie[1].videos.length ? 
         <div className='videoContainer'>
           {returnMovieTrailers()}
-        </div>
+        </div> :
+        <></>}
       </div>
     </main>
   )
