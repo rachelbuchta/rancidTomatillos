@@ -136,7 +136,10 @@ main {
     width: 90%;
     overflow: scroll;
     margin: 3%;
-
+  }
+  .backdrop {
+    position: fixed;
+    top: 18.1vh;
   }
 }
 
