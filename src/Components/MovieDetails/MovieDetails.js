@@ -67,7 +67,7 @@ const MovieDetails = ({currentMovie, isLoading}) => {
         </section>
         <div className='videoContainer'>
           {returnMovieTrailers()}
-        </div> 
+        </div>
       </div>
     </main>
   )

@@ -124,6 +124,16 @@ main {
   main {
     height: 100%;
   }
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+  }
+  footer {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+  }
   .detailsWrapper {
     flex-direction: column;
   }
@@ -140,6 +150,7 @@ main {
   .backdrop {
     position: fixed;
     top: 18.1vh;
+    height: 100%;
   }
 }
 

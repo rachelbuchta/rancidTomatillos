@@ -1,5 +1,8 @@
 footer {
-    height: 4vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 12vh;
     background-color: #212529;
     background-image: linear-gradient(#212529, #495057);
     font-size: larger;
