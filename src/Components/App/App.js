@@ -4,6 +4,7 @@ import Movies from '../Movies/Movies'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import MovieDetails from '../MovieDetails/MovieDetails'
+import Error from '../Error/Error'
 import ReRoute from '../ReRoute/ReRoute'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
 import { Route, Switch } from 'react-router-dom'
@@ -50,11 +51,11 @@ class App extends Component {
       <div className='App'>
         <Header />
         <Switch>
-        {this.state.isLoading && !this.state.error &&
-        ( <h2 className='userMsg'>Loading...</h2> )}
+        {/* {this.state.isLoading && !this.state.error &&
+        ( <h2 className='userMsg'>Loading...</h2> )} */}
 
         {this.state.error && (
-          <h2 className='userMsg'>{this.state.error}</h2>
+          <Error />
         )}
         
         {!this.state.isLoading && (

@@ -1,0 +1,18 @@
+.main {
+  height: 79vh;
+  background-color: #212529;
+  background-image: linear-gradient(#212529, #6c757d);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+
+  .catGif {
+    height: 40em;
+    width: 40em;
+    overflow: 0;
+  }
+
+
+}
+
