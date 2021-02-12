@@ -3,7 +3,7 @@ import './Error.scss'
 import gif from '../../images/giphy.gif'
 
 const Error = ({errorStatus}) => {
-  
+
   if (errorStatus >= 400 && errorStatus <= 499) {
     return (
       <main className='main'>
@@ -20,9 +20,6 @@ const Error = ({errorStatus}) => {
     )
   }
 }
-
-  
-
 
 export default Error
 

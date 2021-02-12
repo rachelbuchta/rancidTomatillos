@@ -55,9 +55,9 @@ describe('Movie Reelz', () => {
   })
 
 })
-it('should show an error page for a bad fetch response', () => {
+// it('should show an error page for a bad fetch response', () => {
 
-})
+// })
 
 // it('should show a page not found redirect for a bad path', () => {
 
