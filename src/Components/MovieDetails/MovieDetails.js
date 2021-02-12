@@ -4,23 +4,28 @@ import X from '../../images/cancel.png'
 import star from '../../images/favourites.png'
 import { Link } from 'react-router-dom'
 
-const MovieDetails = ({currentMovie}) => {
-  
+
+const MovieDetails = ({currentMovie, isLoading}) => {
+
   const convertToCurrency = (num) => {
     return num.toLocaleString('EN-US', {style: 'currency', currency: 'USD'})
   }
 
   const returnMovieTrailers = () => {
-    const test =  currentMovie[1].map(video => {
+ return currentMovie[1].map(video => {
       return <iframe src={`https://www.youtube.com/embed/${video.key}`} title={video.title} key={video.id}></iframe>
     })
-    return test
   }
- 
-  return (
+  
+  return ( 
+    isLoading 
+    ? 
+    <div className="loadingScreen"><h2>Loading...</h2></div> 
+    : 
     <main className='main'>
       <img className='backdrop' src={currentMovie[0].backdrop_path} alt={`${currentMovie[0].title} image`}/>
       <div className='detailsWrapper'>
+
         <section className='detailsContainer'>
           <div className='btnWrapper'>
             <Link to='/'>

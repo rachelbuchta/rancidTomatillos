@@ -31,8 +31,4 @@ const Movie = ({average_rating,title, image, id, getSingleMovieData}) => {
     )
   }
 
-
-
-export default Movie
-
-  
+export default Movie  

@@ -13,7 +13,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = { 
-      movies: [],
+      movies: {movies: []},
       currentMovie: '',
       errorStatus: null,
       error: '',
@@ -38,7 +38,14 @@ class App extends Component {
     })
   }
 
+  // componentDidUpdate = () => {
+  //   if (this.state.currentMovie && this.state.isLoading) {
+  //     this.setState({ isLoading: false })
+  //   }
+  // }
+
   getSingleMovieData = (id) => {
+    this.setState({ isLoading: true })
     let movie
     let videos
     let responseStatus
@@ -59,35 +66,28 @@ class App extends Component {
     })
   }
 
-  exitDetails = () => {
-    this.setState({currentMovie: ''})
-  }
-
   render() {
     return (
       <div className='App'>
         <Header />
         <Switch>
-        {/* {this.state.isLoading && !this.state.error &&
-        ( <h2 className='userMsg'>Loading...</h2> )} */}
 
         {this.state.error && (
           <Error error={this.state.error} errorStatus={this.state.errorStatus}/>
-        )}
-        
-        {!this.state.isLoading && (
-        < Route exact path='/' render={()=> <Movies movies={this.state.movies} getSingleMovieData={this.getSingleMovieData}/>}/>
-        )}
+        )
 
-        {this.state.currentMovie && (
+        < Route 
+          exact
+          path='/' 
+          render={()=> <Movies movies={this.state.movies} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading}/>}/>
+
         < Route 
            exact
            path='/:id'
            render={ ( { match }) => {
              const { id } = match.params
-             return <MovieDetails currentMovie={this.state.currentMovie} />
+             return <MovieDetails currentMovie={this.state.currentMovie} isLoading={this.state.isLoading} />
            }}/>
-        )}
 
         {/* < Route component={ReRoute} /> */}
         </Switch>
