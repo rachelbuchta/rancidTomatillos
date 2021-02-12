@@ -13,7 +13,6 @@ const Movie = ({average_rating,title, image, id, getSingleMovieData}) => {
         <img className='starCountImg' src={star} alt='star-icon'/>
       )
     })
-    console.log(createStars)
     return createStars
   }
     return (

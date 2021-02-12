@@ -15,7 +15,7 @@ class App extends Component {
     this.state = { 
       movies: [],
       currentMovie: '',
-      errorStatus: '',
+      errorStatus: null,
       error: '',
       isLoading: true
      }
@@ -23,11 +23,9 @@ class App extends Component {
 
   componentDidMount = () => {
     let responseStatus
-
     getAllMovies()
       .then(response => {
         responseStatus = response.status
-        console.log('good',responseStatus)
         return response.json()
       })
       .then((movies) => {
@@ -37,19 +35,28 @@ class App extends Component {
       .catch(error => {
         console.log('Movies Request Failed', error)
         this.setState({ error: error, errorStatus: responseStatus })
-        console.log(this.state.errorStatus)
-        console.log('bad', responseStatus)
-      })
+    })
   }
 
   getSingleMovieData = (id) => {
-    const selectedMovieDetails = getSingleMovie(id)
-    const selectedMovieVideos = getSingleMovieVideo(id)
-    return Promise.all([selectedMovieDetails, selectedMovieVideos])
-      .then(movie => {
-        this.setState({ currentMovie: [movie[0], movie[1]] })
+    let movie
+    let videos
+    let responseStatus
+    return Promise.all([getSingleMovie(id), getSingleMovieVideo(id)])
+      .then(responses => {
+        responseStatus = [responses[0].status, responses[1].status]
+        return Promise.all(responses.map(response => response.json()))
       })
-      .then(() => console.log('fetch:',this.state.currentMovie))
+      .then(responses => {
+        movie = responses[0]
+        videos = responses[1]
+        this.setState({ currentMovie: [movie.movie, videos.videos], isLoading: false })
+      })
+      .catch(error => {
+        console.log('Movies Request Failed', error)
+        const filteredResponses = responseStatus.filter(status => status > 299)
+        this.setState({ error: error, errorStatus: Number(filteredResponses) })
+    })
   }
 
   exitDetails = () => {

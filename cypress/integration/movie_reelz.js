@@ -1,19 +1,18 @@
 describe('Movie Reelz', () => {
-
   beforeEach(() => {
-    cy.visit('http://localhost:3000');
-  })
-
-  it('Should be able to visit the page and render all movies', () => {
     cy.fixture('movieData.json')
       .then((movies) => {
         cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
           statusCode: 201,
-          body: movies.movies
+          body: movies
         })
       })
-        .get('.moviesContainer').children('.movieCard');
-        cy.url().should('include', '/')
+    cy.visit('http://localhost:3000');
+  })
+
+  it('Should be able to visit the page and render all movies', () => {
+      cy.get('.moviesContainer').children('.cardContainer').children('.movieCard');
+      cy.url().should('include', '/')
   })
 
   it('Should have an movie poster image pertaining to that movie', () => {
@@ -22,12 +21,11 @@ describe('Movie Reelz', () => {
   })
 
   it('Should be able to click a single movie, all movies disappear and are navigated to a new page that displays that single movies details and trailer', () => {
-    cy.get('.movieCard:first').click()
     cy.fixture('movieData.json')
-    .then((movies) => {
+    .then((movie) => {
       cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919', {
         statusCode: 201,
-        body: movies.movie
+        body: movie
       })
     })
     .then((videos) => {
@@ -36,6 +34,7 @@ describe('Movie Reelz', () => {
         body: videos
       })
     })
+      cy.get('.movieCard:first').click()
       cy.get('.main').children('.backdrop', '.detailsWrapper')
         .get('.videoContainer').children('iframe')
       cy.url().should('include', '694919')
@@ -55,12 +54,12 @@ describe('Movie Reelz', () => {
       cy.url().should('include', '/')
   })
 
-// it('should show an error page for a bad fetch response', () => {
+})
+it('should show an error page for a bad fetch response', () => {
 
-// })
+})
 
 // it('should show a page not found redirect for a bad path', () => {
 
 // })
 
-})

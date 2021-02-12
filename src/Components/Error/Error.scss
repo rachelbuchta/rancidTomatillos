@@ -1,7 +1,7 @@
 .main {
   height: 79vh;
   background-color: #212529;
-  background-image: linear-gradient(#212529, #6c757d);
+  background-image: linear-gradient(#6c757d, #212529);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,6 +10,19 @@
   .catGif {
     height: 40em;
     width: 40em;
+  }
+
+  .errorStatus {
+    color: #B02AF8;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+  }
+
+  .errorMsg {
+    color: white;
+    font-size: 2em;
+    text-align: center;
   }
 
 

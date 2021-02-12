@@ -1,17 +1,28 @@
 import React from 'react'
 import './Error.scss'
-import { Link } from 'react-router-dom'
 import gif from '../../images/giphy.gif'
 
- const Error = ({error}) => {
+const Error = ({errorStatus}) => {
   
-   console.log(error.status)
+  if (errorStatus >= 400 && errorStatus <= 499) {
+    return (
+      <main className='main'>
+        <img className='catGif' src={gif}/>
+      </main>
+    )
 
-   return (
-     <main className='main'>
-      <img className='catGif' src={gif}/>
-     </main>
-   )
+  } else if (errorStatus >= 499) {
+    return (
+      <main className='main'>
+        <h1 className='errorStatus'>500 Error</h1>
+        <h2 className='errorMsg'>Oops! Something went wrong. Please try refreshing the page.</h2>
+      </main>
+    )
+  }
 }
 
+  
+
+
 export default Error
+
