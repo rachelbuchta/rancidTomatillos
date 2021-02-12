@@ -54,12 +54,15 @@ describe('Movie Reelz', () => {
       cy.url().should('include', '/')
   })
 
+// it.only('should show an error page for a bad fetch response', () => {
+//        cy.fixture('movieData.json')
+//         .then((movies) => {
+//           cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+//           "forceNetworkError": true,
+         
+    
+//         })
+
+//         })
+// })
 })
-// it('should show an error page for a bad fetch response', () => {
-
-// })
-
-// it('should show a page not found redirect for a bad path', () => {
-
-// })
-
