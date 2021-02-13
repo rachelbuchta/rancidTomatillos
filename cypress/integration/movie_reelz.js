@@ -53,16 +53,26 @@ describe('Movie Reelz', () => {
       .get('.headerLink').children('.headerImg').click()
       cy.url().should('include', '/')
   })
+})
+
+describe('Movie Reelz', () => {
+  it('Should render 404 error page', () => {
+      cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+      statusCode: 404
+
+    })
+  cy.visit('http://localhost:3000');
+ })
+it('Should render 500 error page', () => {
+      cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+      statusCode: 500
+    })
+  cy.visit('http://localhost:3000');
+ })
+ 
+})
 
 // it.only('should show an error page for a bad fetch response', () => {
-//        cy.fixture('movieData.json')
-//         .then((movies) => {
-//           cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
-//           "forceNetworkError": true,
-         
-    
-//         })
 
-//         })
 // })
-})
+

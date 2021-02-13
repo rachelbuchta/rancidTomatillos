@@ -74,7 +74,7 @@ class App extends Component {
 
         {this.state.error && (
           <Error error={this.state.error} errorStatus={this.state.errorStatus}/>
-        )
+        )}
 
         < Route 
           exact

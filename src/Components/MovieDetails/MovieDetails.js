@@ -41,7 +41,7 @@ const MovieDetails = ({currentMovie, isLoading}) => {
               {currentMovie[0].release_date} 
               </p>
               <p className='bold'>Average Rating: <br/>
-               {currentMovie[0].average_rating}
+               {currentMovie[0].average_rating.toFixed(1)}
                 <img className='starImg' src={star} alt='star-icon'/>
               </p>
               <p className='bold'>Runtime: <br/>
@@ -66,7 +66,7 @@ const MovieDetails = ({currentMovie, isLoading}) => {
             
           </div>
         </section>
-        {currentMovie[1].videos.length ? 
+        {currentMovie[1].length ? 
         <div className='videoContainer'>
           {returnMovieTrailers()}
         </div> :
