@@ -40,12 +40,13 @@ class App extends Component {
       // .then(this.getAllData())
   }
 
-
-  // componentDidUpdate = () => {
-  //   if (this.state.currentMovie && this.state.isLoading) {
-  //     this.setState({ isLoading: false })
-  //   }
-  // }
+  filterMovies = (input) => {
+    console.log(this.state.input)
+    const filteredMovies = this.state.movies.filter(movie => {
+      return movie.title === input
+    })
+    console.log(filteredMovies)
+  }
 
   getSingleMovieData = (id) => {
     this.setState({ isLoading: true })
@@ -74,7 +75,7 @@ class App extends Component {
       <div className='App'>
         <Header />
 
-        <SearchBar />
+        <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
 
         <Switch>
 

@@ -2,15 +2,20 @@ import React, { Component } from 'react'
 import './SearchBar.scss'
 
 class SearchBar extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            input: ''
+            input: '',
         }
     }
 
     handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value })
+        this.setState({ input: event.target.value })
+    }
+
+    submitSearch(event) {
+        event.preventDefault()
+        this.props.filterMovies(this.state.input)
     }
 
     clearInputs() {
@@ -25,8 +30,9 @@ class SearchBar extends Component {
                     value={this.state.input}
                     name="input"
                     placeholder="Search by title"
-                    onChange={() => this.handleChange()}
+                    onChange={(event) => this.handleChange(event)}
                  />
+                 <button onClick={(event) =>this.submitSearch(event)}>Search</button>
             </form>
         )
     }

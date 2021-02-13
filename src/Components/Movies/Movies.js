@@ -5,9 +5,6 @@ import { getSingleMovieVideo } from '../../util'
 
 
 const Movies = ({movies, getSingleMovieData, isLoading}) => {
-  
-     
-
   let movieCards
   if (isLoading) {
     return (<h2 className="loadingScreen">Loading...</h2>)
