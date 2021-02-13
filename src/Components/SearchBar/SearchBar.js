@@ -10,7 +10,13 @@ class SearchBar extends Component {
     }
 
     handleChange(event) {
-        this.setState({ input: event.target.value })
+        // this.setState({ input: event.target.value })
+        this.setState(prevState => {
+            return {
+                input: event.target.value + prevState.input
+            }
+        })
+        this.props.filterMovies(this.state.input)
     }
 
     submitSearch(event) {
@@ -24,9 +30,8 @@ class SearchBar extends Component {
 
     render() {
         return  (
-            <form>
+            <form className="searchInput">
                 <input 
-                    className="searchInput"
                     value={this.state.input}
                     name="input"
                     placeholder="Search by title"

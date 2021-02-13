@@ -41,12 +41,15 @@ class App extends Component {
   }
 
   filterMovies = (input) => {
-    console.log(this.state.input)
     const filteredMovies = this.state.movies.filter(movie => {
-      return movie.title === input
+      const upperCaseTitle = movie.title.toUpperCase()
+      return upperCaseTitle.includes(input.toUpperCase())
     })
     console.log(filteredMovies)
+    this.setState({ movies: filteredMovies })
   }
+
+  // name.charAt(0).toUpperCase() + name.slice(1)
 
   getSingleMovieData = (id) => {
     this.setState({ isLoading: true })
