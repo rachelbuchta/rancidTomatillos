@@ -5,6 +5,7 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import MovieDetails from '../MovieDetails/MovieDetails'
 import Error from '../Error/Error'
+import SearchBar from '../SearchBar/SearchBar'
 import ReRoute from '../ReRoute/ReRoute'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
 import { Redirect, Route, Switch } from 'react-router-dom'
@@ -72,6 +73,9 @@ class App extends Component {
     return (
       <div className='App'>
         <Header />
+
+        <SearchBar />
+
         <Switch>
 
         {this.state.error && (
