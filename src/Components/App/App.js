@@ -36,7 +36,9 @@ class App extends Component {
         console.log('Movies Request Failed', error)
         this.setState({ error: error, errorStatus: responseStatus })
     })
+      // .then(this.getAllData())
   }
+
 
   // componentDidUpdate = () => {
   //   if (this.state.currentMovie && this.state.isLoading) {
