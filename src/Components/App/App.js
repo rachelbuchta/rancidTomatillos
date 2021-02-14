@@ -21,7 +21,7 @@ class App extends Component {
       errorStatus: null,
       error: '',
       isLoading: true,
-      searchResults: '',
+      searchResults: null,
       favoritedIds: null
      }
   }

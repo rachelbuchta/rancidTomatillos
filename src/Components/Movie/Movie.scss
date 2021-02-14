@@ -1,19 +1,23 @@
 .cardContainer {
   margin-bottom: 4%;
+  // z-index: 1;
 }
 
 .movieCard {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 85%;
     // box-shadow: 3px 3px 4px 4px #B02AF8;
     position: relative;
+    z-index: 1;
 }
 
 .movieLink {
+  display: flex;
+  flex-direction: column;
     :hover {
-      box-shadow: 3px 3px 4px 4px #B02AF8;
+      // box-shadow: 3px 3px 4px 4px #B02AF8;
       transform: scale(1.1);
     }
 }
@@ -23,8 +27,38 @@
   max-width: 100%;
   height: 100%;
   width: 100%;
+  z-index: 1;
   box-shadow: 3px 3px 4px 4px #B02AF8;
 }
+
+.plusWrapper {
+  display: flex;
+  flex-direction: column;
+  // z-index: 3;
+  // width: 100%;
+
+      // :hover {
+      //  box-shadow: 0px 0px 0px 0px none;
+      //  transform: scale(0);
+      // }
+}
+
+.plusIcon {
+  height: 2em;
+  width: 1.5em;
+  // z-index: 3;
+  // margin-bottom: -20%;
+
+    // :hover {
+    //   // box-shadow: 0px 0px 0px 0px #B02AF8;
+    //   // transform: scale(1);
+    //      box-shadow: 0px 0px 0px 0px none;
+    //      transform: scale(0);
+    // }
+}
+
+ 
+
 
 .starCountImg {
   height: 1em;
