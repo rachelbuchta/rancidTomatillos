@@ -3,9 +3,18 @@ import './Movies.scss'
 import Movie from '../Movie/Movie'
 
 const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
+
+  const sortByRatings = () => {
+    const rated = movies.sort((a,b) => {
+      return b.average_rating - a.average_rating
+    })
+    console.log(rated)
+  }
+
   let movieCards
 
   const buildMovieCard = (type) => {
+    sortByRatings()
   return type.map(movie => {
       return (
         <Movie
@@ -19,6 +28,7 @@ const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
       )
   })
   }
+  
 
   if (isLoading) {
     return (<h2 className="loadingScreen">Loading...</h2>)
