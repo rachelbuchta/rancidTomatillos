@@ -26,7 +26,7 @@ class SearchBar extends Component {
   render() {
     return  (
       <form className="searchInput">
-        <input 
+        <input className='search'
           value={this.state.input}
           name="input"
           placeholder="Search by title"

@@ -73,9 +73,14 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Header />
+        
+        
+          <Header />
+          <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
+       
+        
+        
 
-        <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
 
         <Switch>
 
