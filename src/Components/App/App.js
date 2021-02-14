@@ -8,7 +8,7 @@ import Error from '../Error/Error'
 import SearchBar from '../SearchBar/SearchBar'
 import SortDropDown from '../SortDropDown/SortDropDown'
 import ReRoute from '../ReRoute/ReRoute'
-import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
+import { getAllMovies, getSingleMovie, getSingleMovieVideo, getFavorites } from '../../util'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
 class App extends Component {
@@ -20,25 +20,44 @@ class App extends Component {
       errorStatus: null,
       error: '',
       isLoading: true,
-      searchResults: ''
+      searchResults: '',
+      favoritedIds: null
      }
   }
 
   componentDidMount = () => {
     let responseStatus
-    getAllMovies()
-      .then(response => {
-        responseStatus = response.status
-        return response.json()
+    let allMovies
+    let favorites
+    return Promise.all([getAllMovies(), getFavorites()])
+      .then(responses => {
+        responseStatus = [responses[0].status, responses[1].status]
+        return Promise.all(responses.map(response => response.json()))
       })
-      .then((movies) => {
-        console.log('Movies Request Successful', movies)
-        this.setState({ movies: movies.movies, isLoading: false })
+      .then(responses => {
+        allMovies = responses[0]
+        favorites = responses[1]
+        console.log(allMovies)
+        this.setState({ movies: allMovies.movies, favoritedIds: favorites.ids, isLoading: false })
+        // console.log(this.state.favoritedIds)
       })
       .catch(error => {
         console.log('Movies Request Failed', error)
-        this.setState({ error: error, errorStatus: responseStatus })
+        const filteredResponses = responseStatus.filter(status => status > 299)
+        this.setState({ error: error, errorStatus: Number(filteredResponses) })
     })
+    //   .then(response => {
+    //     responseStatus = response.status
+    //     return response.json()
+    //   })
+    //   .then((movies) => {
+    //     console.log('Movies Request Successful', movies)
+    //     this.setState({ movies: movies.movies, isLoading: false })
+    //   })
+    //   .catch(error => {
+    //     console.log('Movies Request Failed', error)
+    //     this.setState({ error: error, errorStatus: responseStatus })
+    // })
   }
 
   filterMovies = (input) => {
