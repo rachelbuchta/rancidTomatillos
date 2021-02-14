@@ -7,6 +7,7 @@ import MovieDetails from '../MovieDetails/MovieDetails'
 import Error from '../Error/Error'
 import SearchBar from '../SearchBar/SearchBar'
 import SortDropDown from '../SortDropDown/SortDropDown'
+import Favorites from '../Favorites/Favorites'
 import ReRoute from '../ReRoute/ReRoute'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo, getFavorites } from '../../util'
 import { Redirect, Route, Switch } from 'react-router-dom'
@@ -101,6 +102,7 @@ class App extends Component {
           </div>
           <Header />
         </section>
+      
          
         <Switch>
 
@@ -121,6 +123,7 @@ class App extends Component {
              return <MovieDetails currentMovie={this.state.currentMovie} isLoading={this.state.isLoading} />
            }}/>
         </Switch>
+        <Favorites  movies={this.state.movies} favoritedIds={this.state.favoritedIds}/>
         <Footer />
       </div>
     )

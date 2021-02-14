@@ -3,6 +3,7 @@ import './Movie.scss'
 import { Link } from 'react-router-dom'
 import star from '../../images/favourites.png'
 
+
 const Movie = ({average_rating,title, image, id, getSingleMovieData}) => {
 
   const starCount = () => {
