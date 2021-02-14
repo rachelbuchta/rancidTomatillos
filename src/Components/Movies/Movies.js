@@ -8,13 +8,13 @@ const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
     const rated = movies.sort((a,b) => {
       return b.average_rating - a.average_rating
     })
-    console.log(rated)
+    return rated
   }
 
   let movieCards
 
   const buildMovieCard = (type) => {
-    sortByRatings()
+    sortByRatings().reverse()
   return type.map(movie => {
       return (
         <Movie
@@ -26,7 +26,7 @@ const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
           getSingleMovieData={getSingleMovieData}
         />
       )
-  })
+   })
   }
   
 
