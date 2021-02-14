@@ -1,8 +1,9 @@
 form {
   display: flex;
   justify-content: center;
-  background-color: #212529;
-  padding: 1%;
+  height: 3em;
+  // padding: 1%;
+  // width: 30%;
 
     .search {
         border: 1px solid grey;
@@ -11,8 +12,9 @@ form {
         width: 100%;
         padding: 2px 23px 2px 30px;
         outline: 0;
-        background-color: #f5f5f5;
-        width: 20%;
+        background-color: #495057;
+        color: whitesmoke;
+        // width: 87%;
  
     }
 }

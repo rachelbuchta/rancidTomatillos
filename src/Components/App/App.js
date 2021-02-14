@@ -74,10 +74,15 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        
+        <section className='test'>
+
+          <div className='searchContainer'>
+            <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
+            <SortDropDown />
+          </div>
           <Header />
-          <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
-          <SortDropDown />
+        </section>
+         
         <Switch>
 
         {this.state.error && (
