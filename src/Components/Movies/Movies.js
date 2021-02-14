@@ -1,15 +1,12 @@
 import React from 'react'
 import './Movies.scss'
 import Movie from '../Movie/Movie'
-import { getSingleMovieVideo } from '../../util'
 
-const Movies = ({movies, getSingleMovieData, isLoading}) => {
-
+const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
   let movieCards
-  if (isLoading) {
-    return (<h2 className="loadingScreen">Loading...</h2>)
-  } else {
-    movieCards = movies.map(movie => {
+
+  const buildMovieCard = (type) => {
+  return type.map(movie => {
       return (
         <Movie
           image={movie.poster_path}
@@ -20,10 +17,18 @@ const Movies = ({movies, getSingleMovieData, isLoading}) => {
           getSingleMovieData={getSingleMovieData}
         />
       )
-    })
+  })
   }
 
-  return(
+  if (isLoading) {
+    return (<h2 className="loadingScreen">Loading...</h2>)
+  } else if (searchResults) {
+    movieCards = buildMovieCard(searchResults)
+  } else {
+    movieCards = buildMovieCard(movies)
+  } 
+
+  return (
     <section className='moviesContainer'>
       {movieCards}
     </section>

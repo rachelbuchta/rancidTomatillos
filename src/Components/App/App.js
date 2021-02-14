@@ -18,7 +18,8 @@ class App extends Component {
       currentMovie: '',
       errorStatus: null,
       error: '',
-      isLoading: true
+      isLoading: true,
+      searchResults: ''
      }
   }
 
@@ -37,7 +38,6 @@ class App extends Component {
         console.log('Movies Request Failed', error)
         this.setState({ error: error, errorStatus: responseStatus })
     })
-      // .then(this.getAllData())
   }
 
   filterMovies = (input) => {
@@ -45,11 +45,8 @@ class App extends Component {
       const upperCaseTitle = movie.title.toUpperCase()
       return upperCaseTitle.includes(input.toUpperCase())
     })
-    console.log(filteredMovies)
-    this.setState({ movies: filteredMovies })
+    this.setState({ searchResults: filteredMovies })
   }
-
-  // name.charAt(0).toUpperCase() + name.slice(1)
 
   getSingleMovieData = (id) => {
     this.setState({ isLoading: true })
@@ -89,7 +86,7 @@ class App extends Component {
         < Route 
           exact
           path='/' 
-          render={()=> <Movies movies={this.state.movies} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading}/>}/>
+          render={()=> <Movies movies={this.state.movies} searchResults={this.state.searchResults} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading}/>}/>
 
         < Route 
            exact
