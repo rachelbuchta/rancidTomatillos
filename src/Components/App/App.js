@@ -24,7 +24,8 @@ class App extends Component {
       searchResults: null,
       favoritedIds: null,
       favoritedMovies: null,
-      favoritesPage: false
+      favoritesPage: false,
+      triggerDropDown: false
      }
   }
 
@@ -49,6 +50,15 @@ class App extends Component {
         const filteredResponses = responseStatus.filter(status => status > 299)
         this.setState({ error: error, errorStatus: Number(filteredResponses) })
     })
+  }
+
+  sortByRatings = () => {
+    this.setState({ triggerDropDown: true})
+    const highToLow = this.state.movies.sort((a,b) => {
+      return b.average_rating - a.average_rating
+    })
+    console.log(highToLow)
+    return highToLow
   }
 
   filterMovies = (input) => {
@@ -110,7 +120,7 @@ class App extends Component {
 
           <div className='searchContainer'>
             <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
-            <SortDropDown />
+            <SortDropDown triggerDropDown={this.state.triggerDropDown} sortByRatings={this.sortByRatings}/>
           </div>
           <Header toggleFavoritesPage={this.toggleFavoritesPage}/>
         </section>
@@ -125,7 +135,7 @@ class App extends Component {
         < Route 
           exact
           path='/' 
-          render={()=> <Movies movies={this.state.movies} searchResults={this.state.searchResults} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading} favoritedMovies={this.state.favoritedMovies} favoritesPage={this.state.favoritesPage}/>}
+          render={()=> <Movies movies={this.state.movies} searchResults={this.state.searchResults} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading} favoritedMovies={this.state.favoritedMovies} favoritesPage={this.state.favoritesPage} triggerDropDown={this.state.triggerDropDown}/>}
           />
 
         < Route 

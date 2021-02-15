@@ -14,15 +14,6 @@ class SearchBar extends Component {
         this.props.filterMovies(event.target.value)
     }
 
-    submitSearch(event) {
-        event.preventDefault()
-        this.props.filterMovies(this.state.input)
-    }
-
-    clearInputs() {
-        this.setState({ input: ''})
-    }
-
   render() {
     return  (
       <form className="searchInput">

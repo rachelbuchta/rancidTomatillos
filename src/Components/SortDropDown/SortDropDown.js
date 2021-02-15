@@ -1,19 +1,41 @@
-import React from 'react'
+import { React, Component } from 'react'
 import './SortDropDown.scss'
 
-const SortDropDown = () => {
+class SortDropDown extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectValue: null
+    }
+  }
 
-  const selectSort = () => {
+  handleSelection(event) {
+    console.log(this.props)
+    console.log(this.props.sortByRatings())
+    if (this.props.triggerDropDown) {
+      this.setState({ selectValue: event.target.value })
+      this.renderCorrectSort()
+    }
+  }
 
+  renderCorrectSort() {
+    if (this.state.selectValue === 'highToLow') {
+      this.props.sortByRatings()
+    } else if (this.state.selectValue === 'lowToHigh') {
+      this.props.sortByRatings().reverse()
+    }
   }
 
 
-  return (
-    <select onchange="selectedSubjectName()" className="dropDown">
-      <option>Highest to Lowest Rating</option>
-      <option>Lowest to Highest Rating</option>
-    </select>
-  )
-}
+
+  render() {
+    return (
+      <select onChange={(event)=>this.handleSelection(event)} className="dropDown">
+        <option value='highToLow'>Highest to Lowest Rating</option>
+        <option value='lowToHigh'>Lowest to Highest Rating</option>
+      </select>
+    )
+  }
+} 
 
 export default SortDropDown
