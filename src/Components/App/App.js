@@ -9,7 +9,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import SortDropDown from '../SortDropDown/SortDropDown'
 import Favorites from '../Favorites/Favorites'
 import ReRoute from '../ReRoute/ReRoute'
-import { getAllMovies, getSingleMovie, getSingleMovieVideo, getFavorites } from '../../util'
+import { getAllMovies, getSingleMovie, getSingleMovieVideo, getFavorites, updateFavorites } from '../../util'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
 class App extends Component {
@@ -41,7 +41,6 @@ class App extends Component {
         favorites = responses[1]
         console.log(allMovies)
         this.setState({ movies: allMovies.movies, favoritedIds: favorites.ids, isLoading: false })
-        // console.log(this.state.favoritedIds)
       })
       .then(this.findFavorites)
       .catch(error => {
@@ -49,18 +48,6 @@ class App extends Component {
         const filteredResponses = responseStatus.filter(status => status > 299)
         this.setState({ error: error, errorStatus: Number(filteredResponses) })
     })
-    //   .then(response => {
-    //     responseStatus = response.status
-    //     return response.json()
-    //   })
-    //   .then((movies) => {
-    //     console.log('Movies Request Successful', movies)
-    //     this.setState({ movies: movies.movies, isLoading: false })
-    //   })
-    //   .catch(error => {
-    //     console.log('Movies Request Failed', error)
-    //     this.setState({ error: error, errorStatus: responseStatus })
-    // })
   }
 
   filterMovies = (input) => {
@@ -131,7 +118,8 @@ class App extends Component {
         < Route 
           exact
           path='/' 
-          render={()=> <Movies movies={this.state.movies} searchResults={this.state.searchResults} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading}/>}/>
+          render={()=> <Movies movies={this.state.movies} searchResults={this.state.searchResults} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading} favoritedMovies={this.state.favoritedMovies}/>}
+          />
 
         < Route 
            exact
@@ -140,8 +128,12 @@ class App extends Component {
              const { id } = match.params
              return <MovieDetails currentMovie={this.state.currentMovie} isLoading={this.state.isLoading} />
            }}/>
+
+        < Route 
+          exact
+          path='/favorites'
+          render={()=> <Favorites favoritedMovies={this.state.favoritedMovies}/>}/>
         </Switch>
-        <Favorites findFavorites={this.findFavorites} movies={this.state.movies} favoritedIds={this.state.favoritedIds}/>
         <Footer />
       </div>
     )

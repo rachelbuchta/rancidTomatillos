@@ -2,8 +2,10 @@ import React from 'react'
 import './Movies.scss'
 import Movie from '../Movie/Movie'
 
-const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
-
+const Movies = ({movies, getSingleMovieData, isLoading, searchResults, favoritedMovies}) => {
+  console.log(typeof favoritedMovies)
+  console.log(typeof movies)
+  console.log(typeof searchResults)
   const sortByRatings = () => {
     const rated = movies.sort((a,b) => {
       return b.average_rating - a.average_rating
