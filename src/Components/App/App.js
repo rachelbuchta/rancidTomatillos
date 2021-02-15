@@ -52,12 +52,14 @@ class App extends Component {
     })
   }
 
-  sortByRatings = () => {
+  triggerDropDown = () => {
     this.setState({ triggerDropDown: true })
+  }
+
+  sortByRatings = () => {
     const sortedMovies = this.state.movies.sort((a,b) => {
       return b.average_rating - a.average_rating
     })
-    console.log(sortedMovies)
     return sortedMovies
   }
 
@@ -66,16 +68,15 @@ class App extends Component {
       const upperCaseTitle = movie.title.toUpperCase()
       return upperCaseTitle.includes(input.toUpperCase())
     })
-    this.setState({ searchResults: filteredMovies })
+    this.setState({ searchResults: [...filteredMovies] })
+    console.log(this.state.searchResults)
   }
 
   toggleFavoritesPage = () => {
     this.setState({ favoritesPage: true })
-    console.log("clicked")
   }
 
   findFavorites = () => {
-    console.log('CLICKED')
     this.setState({ isLoading: true })
     let favoriteMovies = []
     return this.state.favoritedIds.forEach(id => {
@@ -85,7 +86,6 @@ class App extends Component {
        } 
       })
       this.setState({favoritedMovies: favoriteMovies, isLoading: false})
-      console.log(this.state.favoritedMovies)
     })
   }
 
@@ -117,17 +117,16 @@ class App extends Component {
 
         <div className='searchContainer'>
           <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
-          <SortDropDown triggerDropDown={this.state.triggerDropDown} sortByRatings={this.sortByRatings}/>
+          <SortDropDown triggerDropDown={this.triggerDropDown} triggerDropDownState={this.state.triggerDropDown} sortByRatings={this.sortByRatings}/>
         </div>
 
         <Header toggleFavoritesPage={this.toggleFavoritesPage}/>
 
-        <Switch>
-
         {this.state.error && (
-          <Error error={this.state.error} errorStatus={this.state.errorStatus}/>
+        <Error error={this.state.error} errorStatus={this.state.errorStatus}/>
         )}
 
+        <Switch>
         < Route 
           exact
           path='/' 
@@ -146,7 +145,6 @@ class App extends Component {
              const { id } = match.params
              return <MovieDetails currentMovie={this.state.currentMovie} isLoading={this.state.isLoading} />
            }}/>
-
 
         </Switch>
         <Footer />

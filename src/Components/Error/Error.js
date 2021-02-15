@@ -3,14 +3,14 @@ import './Error.scss'
 import gif from '../../images/giphy.gif'
 
 const Error = ({error, errorStatus}) => {
-  console.log(error)
+
   if (errorStatus >= 400 && errorStatus <= 499) {
     return (
       <main className='main'>
-        <img className='catGif' src={gif}/>
+        <img className='catGif' src={gif} alt='404 error message with cat'/>
       </main>
     )
-
+    
   } else if (errorStatus >= 499) {
     return (
       <main className='main'>
@@ -19,8 +19,8 @@ const Error = ({error, errorStatus}) => {
       </main>
     )
   }
-  
 }
+
 
 export default Error
 

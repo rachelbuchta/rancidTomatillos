@@ -7,7 +7,7 @@ import emptyHeart from '../../images/heart (1).svg'
 import filledHeart from '../../images/like.svg'
 
 
-const Movie = ({average_rating,title, image, id, getSingleMovieData}) => {
+const Movie = ({average_rating, title, image, id, getSingleMovieData}) => {
 
   const starCount = () => {
     const roundedNumber = Math.round(average_rating.toFixed(1))
@@ -20,14 +20,14 @@ const Movie = ({average_rating,title, image, id, getSingleMovieData}) => {
     return createStars
   }
     return (
-        <section className='cardContainer'>
+        <section key={id} className='cardContainer'>
       
           <div className='plusWrapper'>
             <img className='plusIcon' src={emptyHeart} alt='add to favorites'/>
           </div>
       
-          <article className='movieCard'>
-          <Link  className='movieLink' to={`/${id}`} onClick={() => getSingleMovieData(id)}>
+          <article key={id} className='movieCard'>
+          <Link className='movieLink' to={`/${id}`} onClick={() => getSingleMovieData(id)}>
             <img className='cardImage' src={image} alt={title}/>
           </Link>
           </article>

@@ -10,7 +10,7 @@ class SortDropDown extends Component {
   }
 
   handleSelection(event) {
-    this.props.sortByRatings()
+    this.props.triggerDropDown()
     if (this.props.triggerDropDown) {
       this.setState({ selectValue: event.target.value })
       this.renderCorrectSort()
