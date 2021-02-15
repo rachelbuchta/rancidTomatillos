@@ -17,7 +17,7 @@ class App extends Component {
     super()
     this.state = { 
       movies: {movies: []},
-      currentMovie: '',
+      currentMovie: null,
       errorStatus: null,
       error: '',
       isLoading: true,
@@ -53,12 +53,12 @@ class App extends Component {
   }
 
   sortByRatings = () => {
-    this.setState({ triggerDropDown: true})
-    const highToLow = this.state.movies.sort((a,b) => {
+    this.setState({ triggerDropDown: true })
+    const sortedMovies = this.state.movies.sort((a,b) => {
       return b.average_rating - a.average_rating
     })
-    console.log(highToLow)
-    return highToLow
+    console.log(sortedMovies)
+    return sortedMovies
   }
 
   filterMovies = (input) => {
@@ -78,7 +78,6 @@ class App extends Component {
     console.log('CLICKED')
     this.setState({ isLoading: true })
     let favoriteMovies = []
-  
     return this.state.favoritedIds.forEach(id => {
        const foundMovies = this.state.movies.filter(movie => {
         if(movie.id === id.favoritedId) {
@@ -88,7 +87,6 @@ class App extends Component {
       this.setState({favoritedMovies: favoriteMovies, isLoading: false})
       console.log(this.state.favoritedMovies)
     })
- 
   }
 
   getSingleMovieData = (id) => {
@@ -116,16 +114,14 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <section className='test'>
 
-          <div className='searchContainer'>
-            <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
-            <SortDropDown triggerDropDown={this.state.triggerDropDown} sortByRatings={this.sortByRatings}/>
-          </div>
-          <Header toggleFavoritesPage={this.toggleFavoritesPage}/>
-        </section>
-      
-         
+        <div className='searchContainer'>
+          <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
+          <SortDropDown triggerDropDown={this.state.triggerDropDown} sortByRatings={this.sortByRatings}/>
+        </div>
+
+        <Header toggleFavoritesPage={this.toggleFavoritesPage}/>
+
         <Switch>
 
         {this.state.error && (

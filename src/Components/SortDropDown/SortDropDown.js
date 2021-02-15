@@ -10,6 +10,7 @@ class SortDropDown extends Component {
   }
 
   handleSelection(event) {
+    this.props.sortByRatings()
     if (this.props.triggerDropDown) {
       this.setState({ selectValue: event.target.value })
       this.renderCorrectSort()
@@ -27,6 +28,7 @@ class SortDropDown extends Component {
   render() {
     return (
       <select onChange={(event)=>this.handleSelection(event)} className="dropDown">
+        <option value='' disabled selected>Sort By Ratings</option>
         <option value='highToLow'>Highest to Lowest Rating</option>
         <option value='lowToHigh'>Lowest to Highest Rating</option>
       </select>
