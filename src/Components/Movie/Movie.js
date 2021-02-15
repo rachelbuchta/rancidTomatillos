@@ -3,6 +3,8 @@ import './Movie.scss'
 import { Link } from 'react-router-dom'
 import star from '../../images/favourites.png'
 import plus from '../../images/plus (1).svg'
+import emptyHeart from '../../images/heart (1).svg'
+import filledHeart from '../../images/like.svg'
 
 
 const Movie = ({average_rating,title, image, id, getSingleMovieData}) => {
@@ -21,9 +23,7 @@ const Movie = ({average_rating,title, image, id, getSingleMovieData}) => {
         <section className='cardContainer'>
       
           <div className='plusWrapper'>
-            {/* <button  className='plusWrapper'> */}
-            <img className='plusIcon' src={plus} alt='add to favorites'/>
-            {/* </button> */}
+            <img className='plusIcon' src={emptyHeart} alt='add to favorites'/>
           </div>
       
           <article className='movieCard'>
@@ -31,9 +31,9 @@ const Movie = ({average_rating,title, image, id, getSingleMovieData}) => {
             <img className='cardImage' src={image} alt={title}/>
           </Link>
           </article>
-            <p className='stars'>
+          <p className='stars'>
             {starCount()}
-            </p>
+          </p>
         </section>
 
       

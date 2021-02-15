@@ -2,10 +2,11 @@ import React from 'react'
 import './Movies.scss'
 import Movie from '../Movie/Movie'
 
-const Movies = ({movies, getSingleMovieData, isLoading, searchResults, favoritedMovies}) => {
-  console.log(typeof favoritedMovies)
-  console.log(typeof movies)
-  console.log(typeof searchResults)
+const Movies = ({movies, getSingleMovieData, isLoading, searchResults, favoritedMovies, favoritesPage}) => {
+  console.log("favorites", favoritedMovies)
+  console.log('movies', movies)
+  console.log(favoritesPage)
+  // console.log(typeof searchResults)
   const sortByRatings = () => {
     const rated = movies.sort((a,b) => {
       return b.average_rating - a.average_rating
@@ -14,6 +15,7 @@ const Movies = ({movies, getSingleMovieData, isLoading, searchResults, favorited
   }
 
   let movieCards
+  let favoriteCards
 
   const buildMovieCard = (type) => {
     sortByRatings().reverse()
@@ -36,6 +38,9 @@ const Movies = ({movies, getSingleMovieData, isLoading, searchResults, favorited
     return (<h2 className="loadingScreen">Loading...</h2>)
   } else if (searchResults) {
     movieCards = buildMovieCard(searchResults)
+  } else if (favoritesPage) {
+    console.log(favoritesPage)
+    favoriteCards = buildMovieCard(favoritedMovies)
   } else {
     movieCards = buildMovieCard(movies)
   } 
@@ -43,6 +48,7 @@ const Movies = ({movies, getSingleMovieData, isLoading, searchResults, favorited
   return (
     <section className='moviesContainer'>
       {movieCards}
+      {favoriteCards}
     </section>
     )
   }
