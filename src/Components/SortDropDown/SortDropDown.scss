@@ -12,3 +12,17 @@
     width: 24%;
   }
 }
+
+@media screen and (max-width: 430px) {
+  .dropDown {
+    width: 50%;
+    margin: 1%;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .dropDown {
+    width: 50%;
+    margin: 1%;
+  }
+}

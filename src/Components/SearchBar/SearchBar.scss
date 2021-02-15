@@ -18,3 +18,15 @@ form {
  
     }
 }
+
+@media screen and (max-width: 430px) {
+  form {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  form {
+    width: 50%;
+  }
+}

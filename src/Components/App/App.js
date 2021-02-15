@@ -117,8 +117,8 @@ class App extends Component {
       <div className='App'>
 
         <div className='searchContainer'>
-          <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
           <SortDropDown triggerDropDown={this.triggerDropDown} triggerDropDownState={this.state.triggerDropDown} sortByRatings={this.sortByRatings}/>
+          <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
         </div>
 
         <Header toggleFavoritesPage={this.toggleFavoritesPage}/>

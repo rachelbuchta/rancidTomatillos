@@ -29,6 +29,7 @@
 @media screen and (max-width: 430px) {
   .moviesContainer {
     grid-template-columns: repeat(1, 1fr);
+    padding: 10%;
   }
 }
 
