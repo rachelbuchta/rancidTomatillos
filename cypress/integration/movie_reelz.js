@@ -47,12 +47,6 @@ describe('Movie Reelz', () => {
       .get('.cancelImg').click()
       cy.url().should('include', '/')
   })
-
-  it('Should return to the home page when the header ticket logo is clicked', () => {
-    cy
-      .get('.headerLink').children('.headerImg').click()
-      cy.url().should('include', '/')
-  })
 })
 
 describe('Movie Reelz', () => {
