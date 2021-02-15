@@ -7,11 +7,11 @@ describe('Movie Reelz', () => {
           body: movies
         })
       })
-    cy.visit('http://localhost:3000');
+    cy.visit('http://localhost:3000')
   })
 
   it('Should be able to visit the page and render all movies', () => {
-      cy.get('.moviesContainer').children('.cardContainer').children('.movieCard');
+      cy.get('.moviesContainer').children('.cardContainer').children('.movieCard')
       cy.url().should('include', '/')
   })
 
@@ -58,19 +58,34 @@ describe('Movie Reelz', () => {
   })
 })
 
-describe('Movie Reelz', () => {
+describe('Loading Pages', () => {
+  
+  it('Should show a loading page when waiting for data to be retrieved from an outside source', () => {
+  cy.fixture('movieData.json')
+      .then((movies) => {
+        cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+          statusCode: 201,
+          body: movies,
+          delay: 5000
+        })
+        cy.get('.loadingScreen')
+      })
+  })
+})
+
+describe('Error Pages', () => {
   it('Should render 404 error page', () => {
       cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
       statusCode: 404
     })
-  cy.visit('http://localhost:3000');
+  cy.visit('http://localhost:3000')
  })
  
 it('Should render 500 error page', () => {
       cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
       statusCode: 500
     })
-  cy.visit('http://localhost:3000');
+  cy.visit('http://localhost:3000')
  })
  
 })
