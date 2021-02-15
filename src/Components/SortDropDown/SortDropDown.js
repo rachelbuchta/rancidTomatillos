@@ -10,8 +10,6 @@ class SortDropDown extends Component {
   }
 
   handleSelection(event) {
-    console.log(this.props)
-    console.log(this.props.sortByRatings())
     if (this.props.triggerDropDown) {
       this.setState({ selectValue: event.target.value })
       this.renderCorrectSort()
@@ -20,13 +18,11 @@ class SortDropDown extends Component {
 
   renderCorrectSort() {
     if (this.state.selectValue === 'highToLow') {
-      this.props.sortByRatings()
-    } else if (this.state.selectValue === 'lowToHigh') {
       this.props.sortByRatings().reverse()
+    } else if (this.state.selectValue === 'lowToHigh') {
+      this.props.sortByRatings()
     }
   }
-
-
 
   render() {
     return (
