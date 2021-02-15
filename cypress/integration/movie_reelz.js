@@ -20,7 +20,12 @@ describe('Movie Reelz', () => {
       .get('.movieCard').children('.movieLink').find('img').should('have.attr','src').should('include','https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg')
   })
 
-  it('Should be able to click a single movie, all movies disappear and are navigated to a new page that displays that single movies details and trailer', () => {
+  it('Should show the rounded number of stars beneath that movie poster that is modified from that movie\'s rating', () => {
+    cy
+      .get('.cardContainer:first').children('.stars').children().should('have.length', 6)
+  })
+
+  it.only('Should be able to click a single movie, all movies disappear and are navigated to a new page that displays that single movies details and trailer', () => {
     cy.fixture('movieData.json')
     .then((movie) => {
       cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919', {
