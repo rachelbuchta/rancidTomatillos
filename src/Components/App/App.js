@@ -22,7 +22,8 @@ class App extends Component {
       error: '',
       isLoading: true,
       searchResults: null,
-      favoritedIds: null
+      favoritedIds: null,
+      favoritedMovies: null
      }
   }
 
@@ -42,6 +43,7 @@ class App extends Component {
         this.setState({ movies: allMovies.movies, favoritedIds: favorites.ids, isLoading: false })
         // console.log(this.state.favoritedIds)
       })
+      .then(this.findFavorites)
       .catch(error => {
         console.log('Movies Request Failed', error)
         const filteredResponses = responseStatus.filter(status => status > 299)
@@ -67,6 +69,22 @@ class App extends Component {
       return upperCaseTitle.includes(input.toUpperCase())
     })
     this.setState({ searchResults: filteredMovies })
+  }
+
+  findFavorites = () => {
+    let favoriteMovies = []
+    const foundMovies = this.state.favoritedIds.forEach(id => {
+       const test = this.state.movies.filter(movie => {
+        if(movie.id === id.favoritedId) {
+         return movie
+       } 
+      })
+      console.log(test)
+     return favoriteMovies.push(test)
+    })
+    console.log(favoriteMovies)
+    this.setState({favoritedMovies: favoriteMovies})
+   console.log(this.state.favoritedMovies)
   }
 
   getSingleMovieData = (id) => {
@@ -123,7 +141,7 @@ class App extends Component {
              return <MovieDetails currentMovie={this.state.currentMovie} isLoading={this.state.isLoading} />
            }}/>
         </Switch>
-        <Favorites  movies={this.state.movies} favoritedIds={this.state.favoritedIds}/>
+        <Favorites findFavorites={this.findFavorites} movies={this.state.movies} favoritedIds={this.state.favoritedIds}/>
         <Footer />
       </div>
     )
