@@ -3,11 +3,6 @@ import './SortDropDown.scss'
 
 const SortDropDown = () => {
 
-  const selectSort = () => {
-
-  }
-
-
   return (
     <select onchange="selectedSubjectName()" className="dropDown">
       <option>Highest to Lowest Rating</option>

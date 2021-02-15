@@ -14,7 +14,6 @@ const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
   let movieCards
 
   const buildMovieCard = (type) => {
-    sortByRatings().reverse()
   return type.map(movie => {
       return (
         <Movie
