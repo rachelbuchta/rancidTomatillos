@@ -60,7 +60,7 @@ describe('Movie Reelz', () => {
 
 describe('Loading Pages', () => {
   
-  it('Should show a loading page when waiting for data to be retrieved from an outside source', () => {
+  it.only('Should show a loading page when waiting for data to be retrieved from an outside source', () => {
   cy.fixture('movieData.json')
       .then((movies) => {
         cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
@@ -68,8 +68,9 @@ describe('Loading Pages', () => {
           body: movies,
           delay: 5000
         })
-        cy.get('.loadingScreen')
       })
+      cy.visit('http://localhost:3000')
+      cy.get('.loadingScreen').should('contain', 'Loading...')
   })
 })
 
