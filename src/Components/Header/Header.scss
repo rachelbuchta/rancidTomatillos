@@ -1,18 +1,83 @@
-header {
-    height: 18vh;
-    width: 100%;
-    background-color: #212529;
-    border-bottom: 1px solid #B02AF8;
-    background-image: linear-gradient(#212529, #495057);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+// header {
+//     height: 18vh;
+//     width: 100%;
+//     background-color: #212529;
+//     border-bottom: 1px solid #B02AF8;
+//     background-image: linear-gradient(#212529, #495057);
+//     display: flex;
+//     justify-content: flex-start;
+//     align-items: center;
+// }
+
+// h1 {
+//     font-size: 3.7em;
+//     font-weight: lighter;
+//     color: #B02AF8;
+// }
+.test {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
 
-h1 {
-    font-size: 3.7em;
-    font-weight: lighter;
-    color: #B02AF8;
+.text {
+  
+    // position: absolute;
+    // top: 5%;
+    // right: 80%;
+    // transform: translate(30%,-30%);
+    // text-transform: uppercase;
+    // font-family: verdana;
+    // font-size: 3em;
+    // font-weight: 700;
+    // color: #f5f5f5;
+    // text-shadow: 1px 1px 1px #B02AF8,
+    // //  box-shadow: 3px 3px 4px 4px #B02AF8;
+    //   1px 2px 1px #B02AF8,
+    //   1px 3px 1px #B02AF8,
+    //   1px 4px 1px #B02AF8,
+    //   1px 5px 1px #B02AF8,
+    //   1px 6px 1px #B02AF8,
+    //   1px 7px 1px #B02AF8,
+    //   1px 8px 1px #B02AF8,
+    //   1px 9px 1px #B02AF8,
+    //   1px 10px 1px #B02AF1,
+    //   1px 18px 6px rgba(16, 16, 16, 0.4),
+    //   1px 22px 10px rgba(16, 16, 16, 0.2),
+    //   1px 25px 35px rgba(16, 16, 16, 0.2),
+    //   1px 30px 60px rgba(16, 16, 16, 0.4);
+    //   .container {
+        // width: 100vw;
+        height: 18vh;
+        width: 108%;
+        background-image: linear-gradient(#212529, #495057);
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #B02AF8;
+        // justify-content: left;
+        justify-content: center;
+        // padding: 2%;
+       
+      
+
+      .shadows {
+        position: relative;
+        text-transform: uppercase;
+        text-shadow: -15px 5px 20px #B02AF1;
+        color: whitesmoke;
+        letter-spacing: 0.45em;
+        font-family: 'Anton', Arial, sans-serif;
+        // user-select: none;
+        text-transform: uppercase;
+        font-size: 6em;
+        transition: all 0.25s ease-out;
+        margin: 0;
+      }
+
+      .shadows:hover {
+        text-shadow: -16px 6px 15px #B02AF1;
+      }
+  
 }
 
 .headerLink {

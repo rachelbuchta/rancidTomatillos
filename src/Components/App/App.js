@@ -5,6 +5,8 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import MovieDetails from '../MovieDetails/MovieDetails'
 import Error from '../Error/Error'
+import SearchBar from '../SearchBar/SearchBar'
+import SortDropDown from '../SortDropDown/SortDropDown'
 import ReRoute from '../ReRoute/ReRoute'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
 import { Redirect, Route, Switch } from 'react-router-dom'
@@ -17,7 +19,8 @@ class App extends Component {
       currentMovie: '',
       errorStatus: null,
       error: '',
-      isLoading: true
+      isLoading: true,
+      searchResults: ''
      }
   }
 
@@ -38,11 +41,13 @@ class App extends Component {
     })
   }
 
-  // componentDidUpdate = () => {
-  //   if (this.state.currentMovie && this.state.isLoading) {
-  //     this.setState({ isLoading: false })
-  //   }
-  // }
+  filterMovies = (input) => {
+    const filteredMovies = this.state.movies.filter(movie => {
+      const upperCaseTitle = movie.title.toUpperCase()
+      return upperCaseTitle.includes(input.toUpperCase())
+    })
+    this.setState({ searchResults: filteredMovies })
+  }
 
   getSingleMovieData = (id) => {
     this.setState({ isLoading: true })
@@ -69,17 +74,25 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Header />
+        <section className='test'>
+
+          <div className='searchContainer'>
+            <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
+            <SortDropDown />
+          </div>
+          <Header />
+        </section>
+         
         <Switch>
 
         {this.state.error && (
           <Error error={this.state.error} errorStatus={this.state.errorStatus}/>
-        )
+        )}
 
         < Route 
           exact
           path='/' 
-          render={()=> <Movies movies={this.state.movies} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading}/>}/>
+          render={()=> <Movies movies={this.state.movies} searchResults={this.state.searchResults} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading}/>}/>
 
         < Route 
            exact

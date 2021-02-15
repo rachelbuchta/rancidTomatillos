@@ -2,14 +2,21 @@ import React from 'react'
 import './Movies.scss'
 import Movie from '../Movie/Movie'
 
+const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
 
-const Movies = ({movies, getSingleMovieData, isLoading}) => {
-  if (isLoading) {
-    return (<h2 className="loadingScreen">Loading...</h2>)
-  } else {
-    const movieCards = movies.map(movie => {
+  const sortByRatings = () => {
+    const rated = movies.sort((a,b) => {
+      return b.average_rating - a.average_rating
+    })
+    return rated
+  }
+
+  let movieCards
+
+  const buildMovieCard = (type) => {
+  return type.map(movie => {
       return (
-        <Movie 
+        <Movie
           image={movie.poster_path}
           id={movie.id}
           title={movie.title}
@@ -18,14 +25,23 @@ const Movies = ({movies, getSingleMovieData, isLoading}) => {
           getSingleMovieData={getSingleMovieData}
         />
       )
-    })
+   })
+  }
   
-      return(
-        <section className='moviesContainer'>
-          {movieCards}
-        </section>
+
+  if (isLoading) {
+    return (<h2 className="loadingScreen">Loading...</h2>)
+  } else if (searchResults) {
+    movieCards = buildMovieCard(searchResults)
+  } else {
+    movieCards = buildMovieCard(movies)
+  } 
+
+  return (
+    <section className='moviesContainer'>
+      {movieCards}
+    </section>
     )
   }
-}
 
 export default Movies
