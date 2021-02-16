@@ -7,21 +7,23 @@ import MovieDetails from '../MovieDetails/MovieDetails'
 import Error from '../Error/Error'
 import SearchBar from '../SearchBar/SearchBar'
 import SortDropDown from '../SortDropDown/SortDropDown'
-import ReRoute from '../ReRoute/ReRoute'
+// import ReRoute from '../ReRoute/ReRoute'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+
 
 class App extends Component {
   constructor() {
     super()
     this.state = { 
       movies: {movies: []},
-      currentMovie: '',
+      currentMovie: null,
       errorStatus: null,
       error: '',
       isLoading: true,
-      searchResults: ''
-     }
+      searchResults: null,
+      triggerDropDown: false
+    }
   }
 
   componentDidMount = () => {
@@ -31,22 +33,13 @@ class App extends Component {
         responseStatus = response.status
         return response.json()
       })
-      .then((movies) => {
-        console.log('Movies Request Successful', movies)
-        this.setState({ movies: movies.movies, isLoading: false })
+      .then(movies => {
+        this.setState({ movies: movies.movies, isLoading: false, error: false })
       })
       .catch(error => {
         console.log('Movies Request Failed', error)
-        this.setState({ error: error, errorStatus: responseStatus })
-    })
-  }
-
-  filterMovies = (input) => {
-    const filteredMovies = this.state.movies.filter(movie => {
-      const upperCaseTitle = movie.title.toUpperCase()
-      return upperCaseTitle.includes(input.toUpperCase())
-    })
-    this.setState({ searchResults: filteredMovies })
+        this.setState({ error: error, isLoading: false, errorStatus: Number(responseStatus) })
+      })
   }
 
   getSingleMovieData = (id) => {
@@ -67,41 +60,79 @@ class App extends Component {
       .catch(error => {
         console.log('Movies Request Failed', error)
         const filteredResponses = responseStatus.filter(status => status > 299)
-        this.setState({ error: error, errorStatus: Number(filteredResponses) })
+        this.setState({ error: error, errorStatus: Number(filteredResponses), isLoading: false })
+      })
+  }
+  
+  triggerDropDown = () => {
+    this.setState({ triggerDropDown: true })
+  }
+
+  sortByRatings = () => {
+    const sortedMovies = this.state.movies.sort((a,b) => {
+      return b.average_rating - a.average_rating
     })
+    return sortedMovies
+  }
+
+  filterMovies = (input) => {
+    const filteredMovies = this.state.movies.filter(movie => {
+      const upperCaseTitle = movie.title.toUpperCase()
+      return upperCaseTitle.includes(input.toUpperCase())
+    })
+    this.setState({ searchResults: [...filteredMovies] })
   }
 
   render() {
     return (
       <div className='App'>
-        <section className='test'>
 
-          <div className='searchContainer'>
-            <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
-            <SortDropDown />
-          </div>
-          <Header />
-        </section>
-         
-        <Switch>
+        <div className='searchContainer'>
+          <SortDropDown 
+            triggerDropDown={this.triggerDropDown} 
+            triggerDropDownState={this.state.triggerDropDown} 
+            sortByRatings={this.sortByRatings}
+          />
+
+          <SearchBar 
+            movies={this.state.movies} 
+            filterMovies={this.filterMovies}
+          />
+        </div>
+        <Header />
 
         {this.state.error && (
-          <Error error={this.state.error} errorStatus={this.state.errorStatus}/>
+          <Error error={this.state.error} 
+            errorStatus={this.state.errorStatus}/>
         )}
 
-        < Route 
-          exact
-          path='/' 
-          render={()=> <Movies movies={this.state.movies} searchResults={this.state.searchResults} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading}/>}/>
+        <Switch>
 
-        < Route 
-           exact
-           path='/:id'
-           render={ ( { match }) => {
-             const { id } = match.params
-             return <MovieDetails currentMovie={this.state.currentMovie} isLoading={this.state.isLoading} />
-           }}/>
+          {!this.state.error && (
+            < Route 
+              exact
+              path='/' 
+              render={()=> <Movies 
+                movies={this.state.movies} 
+                searchResults={this.state.searchResults} 
+                getSingleMovieData={this.getSingleMovieData} 
+                isLoading={this.state.isLoading} 
+                triggerDropDown={this.state.triggerDropDown} 
+                error={this.state.error}/>}
+            />
+          )}
+
+          < Route 
+            exact
+            path='/:id'
+            render= {() => {
+              return <MovieDetails 
+                currentMovie={this.state.currentMovie} 
+                isLoading={this.state.isLoading}/>}}
+          />
+
         </Switch>
+        
         <Footer />
       </div>
     )

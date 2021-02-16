@@ -14,6 +14,7 @@ class SearchBar extends Component {
         this.props.filterMovies(event.target.value)
     }
 
+
   render() {
     return  (
       <form className="searchInput">
