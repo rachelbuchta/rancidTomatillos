@@ -7,7 +7,6 @@ import MovieDetails from '../MovieDetails/MovieDetails'
 import Error from '../Error/Error'
 import SearchBar from '../SearchBar/SearchBar'
 import SortDropDown from '../SortDropDown/SortDropDown'
-// import ReRoute from '../ReRoute/ReRoute'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
 import { Route, Switch } from 'react-router-dom'
 
