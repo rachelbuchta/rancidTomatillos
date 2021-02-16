@@ -14,10 +14,9 @@ const Header = ({toggleFavoritesPage}) => {
         {/* <Link className='headerLink' to='/'>
           <img className='headerImg' src={reelzLogo} alt='Reelz Logo'/>
         </Link> */}
-        {/* <NavLink className='favoritesPage' to='/favorites' onClick={toggleFavoritesPage}>
-          View Favorites */}
-          {/* <img className='headerImg' src={reelzLogo} alt='Reelz Logo'/> */}
-        {/* </NavLink> */}
+        <NavLink className='favoritesPage' to='/favorites' onClick={toggleFavoritesPage}>
+          View Favorites 
+        </NavLink>
           <h1 className='shadows'>Reelz</h1>
       </header>
     )

@@ -27,7 +27,7 @@ class SortDropDown extends Component {
 
   render() {
     return (
-      <select onChange={(event)=>this.handleSelection(event)} className="dropDown">
+      <select onChange={(event)=>this.handleSelection(event)} className='dropDown'>
         <option value='' disabled selected>Sort By Ratings</option>
         <option value='highToLow'>Highest to Lowest Rating</option>
         <option value='lowToHigh'>Lowest to Highest Rating</option>

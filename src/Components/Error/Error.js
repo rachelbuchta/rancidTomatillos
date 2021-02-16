@@ -3,7 +3,9 @@ import './Error.scss'
 import gif from '../../images/giphy.gif'
 
 const Error = ({error, errorStatus}) => {
-
+  console.log(error)
+  // console.log(props)
+  console.log("HEY")
   if (errorStatus >= 400 && errorStatus <= 499) {
     return (
       <main className='main'>

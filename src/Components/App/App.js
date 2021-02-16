@@ -41,14 +41,16 @@ class App extends Component {
       .then(responses => {
         allMovies = responses[0]
         favorites = responses[1]
-        console.log(allMovies)
-        this.setState({ movies: allMovies.movies, favoritedIds: favorites.ids, isLoading: false })
+        this.setState({ movies: allMovies.movies, favoritedIds: favorites.ids, isLoading: false, error: false })
       })
-      .then(this.findFavorites)
+      .then(()=> {
+        this.findFavorites()
+      })
       .catch(error => {
         console.log('Movies Request Failed', error)
+        console.log('whatever')
         const filteredResponses = responseStatus.filter(status => status > 299)
-        this.setState({ error: error, errorStatus: Number(filteredResponses) })
+        this.setState({ error: true, errorStatus: Number(filteredResponses) })
     })
   }
 
@@ -70,7 +72,7 @@ class App extends Component {
       .catch(error => {
         console.log('Movies Request Failed', error)
         const filteredResponses = responseStatus.filter(status => status > 299)
-        this.setState({ error: error, errorStatus: Number(filteredResponses) })
+        this.setState({ error: error, errorStatus: Number(filteredResponses), isLoading: false })
     })
   }
   
@@ -91,7 +93,6 @@ class App extends Component {
       return upperCaseTitle.includes(input.toUpperCase())
     })
     this.setState({ searchResults: [...filteredMovies] })
-    console.log(this.state.searchResults)
   }
 
   toggleFavoritesPage = () => {
@@ -108,6 +109,7 @@ class App extends Component {
        } 
       })
       this.setState({favoritedMovies: favoriteMovies, isLoading: false})
+      console.log(this.state.favoritedMovies)
     })
   }
 
@@ -115,23 +117,24 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-
-        <div className='searchContainer'>
-          <SortDropDown triggerDropDown={this.triggerDropDown} triggerDropDownState={this.state.triggerDropDown} sortByRatings={this.sortByRatings}/>
-          <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
-        </div>
+        <section className='test'>
+          <div className='searchContainer'>
+            <SortDropDown triggerDropDown={this.triggerDropDown} triggerDropDownState={this.state.triggerDropDown} sortByRatings={this.sortByRatings}/>
+            <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
+          </div>
 
         <Header toggleFavoritesPage={this.toggleFavoritesPage}/>
-
+        </section>
         {this.state.error && (
         <Error error={this.state.error} errorStatus={this.state.errorStatus}/>
         )}
+
 
         <Switch>
         < Route 
           exact
           path='/' 
-          render={()=> <Movies movies={this.state.movies} searchResults={this.state.searchResults} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading} favoritedMovies={this.state.favoritedMovies} favoritesPage={this.state.favoritesPage} triggerDropDown={this.state.triggerDropDown}/>}
+          render={()=> <Movies movies={this.state.movies} searchResults={this.state.searchResults} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading} favoritedMovies={this.state.favoritedMovies} favoritesPage={this.state.favoritesPage} triggerDropDown={this.state.triggerDropDown} error={this.state.error}/>}
           />
 
         < Route 

@@ -2,8 +2,7 @@ import React from 'react'
 import './Movies.scss'
 import Movie from '../Movie/Movie'
 
-const Movies = ({movies, getSingleMovieData, isLoading, searchResults, favoritedMovies, favoritesPage}) => {
-
+const Movies = ({movies, getSingleMovieData, isLoading, searchResults, error, favoritedMovies, favoritesPage}) => {
   let movieCards
   const buildMovieCard = (type) => {
   return type.map(movie => {
@@ -21,7 +20,7 @@ const Movies = ({movies, getSingleMovieData, isLoading, searchResults, favorited
   }
 
   if (isLoading) {
-    return (<h2 className="loadingScreen">Loading...</h2>)
+    return (<h2 className='loadingScreen'>Loading...</h2>)
   } else if (searchResults !== null && searchResults.length > 0) {
     movieCards = buildMovieCard(searchResults)
   } else if (searchResults !== null && searchResults.length === 0) {
