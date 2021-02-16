@@ -1,12 +1,40 @@
 footer {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 7vh;
+    // height: 7vh;
     background-color: #212529;
     background-image: linear-gradient(#212529, #495057);
     font-size: larger;
     align-items: center;
     border-top: 1px solid #B02AF8;
     color: #B02AF8;
+}
+
+.linkedInProfile {
+    display: flex;
+    align-items: center;
+    color: #B02AF8;
+}
+
+.linkedIn {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 430px) {
+    footer {
+        flex-direction: column;
+    }
+
+    .linkedIn {
+        flex-direction: column;
+    }
+
+    .linkedInProfile {
+        justify-content: center;
+    }
 }
