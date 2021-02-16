@@ -8,8 +8,9 @@ import Error from '../Error/Error'
 import SearchBar from '../SearchBar/SearchBar'
 import SortDropDown from '../SortDropDown/SortDropDown'
 // import ReRoute from '../ReRoute/ReRoute'
-import { getAllMovies, getSingleMovie, getSingleMovieVideo, getFavorites } from '../../util'
+import { getAllMovies, getSingleMovie, getSingleMovieVideo } from '../../util'
 import { Route, Switch } from 'react-router-dom'
+
 
 class App extends Component {
   constructor() {
@@ -27,23 +28,17 @@ class App extends Component {
 
   componentDidMount = () => {
     let responseStatus
-    let allMovies
-    let favorites
-    return Promise.all([getAllMovies(), getFavorites()])
-      .then(responses => {
-        responseStatus = [responses[0].status, responses[1].status]
-        return Promise.all(responses.map(response => response.json()))
+    getAllMovies()
+      .then(response => {
+        responseStatus = response.status
+        return response.json()
       })
-      .then(responses => {
-        allMovies = responses[0]
-        favorites = responses[1]
-        this.setState({ movies: allMovies.movies, favoritedIds: favorites.ids, isLoading: false, error: false })
+      .then(movies => {
+        this.setState({ movies: movies.movies, isLoading: false, error: false })
       })
       .catch(error => {
         console.log('Movies Request Failed', error)
-        console.log('whatever')
-        const filteredResponses = responseStatus.filter(status => status > 299)
-        this.setState({ errorStatus: Number(filteredResponses) })
+        this.setState({ error: error, isLoading: false, errorStatus: Number(responseStatus) })
       })
   }
 
@@ -113,23 +108,24 @@ class App extends Component {
 
         <Switch>
 
-          < Route 
-            exact
-            path='/' 
-            render={()=> <Movies 
-              movies={this.state.movies} 
-              searchResults={this.state.searchResults} 
-              getSingleMovieData={this.getSingleMovieData} 
-              isLoading={this.state.isLoading} 
-              triggerDropDown={this.state.triggerDropDown} 
-              error={this.state.error}/>}
-          />
+          {!this.state.error && (
+            < Route 
+              exact
+              path='/' 
+              render={()=> <Movies 
+                movies={this.state.movies} 
+                searchResults={this.state.searchResults} 
+                getSingleMovieData={this.getSingleMovieData} 
+                isLoading={this.state.isLoading} 
+                triggerDropDown={this.state.triggerDropDown} 
+                error={this.state.error}/>}
+            />
+          )}
 
           < Route 
             exact
             path='/:id'
             render= {() => {
-              // const { id } = match.params
               return <MovieDetails 
                 currentMovie={this.state.currentMovie} 
                 isLoading={this.state.isLoading}/>}}

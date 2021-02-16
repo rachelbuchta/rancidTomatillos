@@ -1,9 +1,10 @@
 import React from 'react'
 import './Movies.scss'
 import Movie from '../Movie/Movie'
+/* eslint-disable indent */
 
 const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
-  let movieCards
+  
   const buildMovieCard = (type) => {
     return type.map(movie => {
       return (
@@ -21,17 +22,13 @@ const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
 
   if (isLoading) {
     return (<h2 className='loadingScreen'>Loading...</h2>)
-  } else if (searchResults !== null && searchResults.length > 0) {
-    movieCards = buildMovieCard(searchResults)
-  } else if (searchResults !== null && searchResults.length === 0) {
+  } else if (searchResults && searchResults.length === 0) {
     return (<h2 className='loadingScreen'>No results for that search found.</h2>)
-  } else {
-    movieCards = buildMovieCard(movies)
   }
 
   return (
     <section className='moviesContainer'>
-      {movieCards}
+     {searchResults ? buildMovieCard(searchResults) : buildMovieCard(movies)}
     </section>
   )
 }
