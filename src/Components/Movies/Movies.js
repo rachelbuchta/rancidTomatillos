@@ -2,10 +2,10 @@ import React from 'react'
 import './Movies.scss'
 import Movie from '../Movie/Movie'
 
-const Movies = ({movies, getSingleMovieData, isLoading, searchResults, error}) => {
+const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
   let movieCards
   const buildMovieCard = (type) => {
-  return type.map(movie => {
+    return type.map(movie => {
       return (
         <Movie
           image={movie.poster_path}
@@ -16,7 +16,7 @@ const Movies = ({movies, getSingleMovieData, isLoading, searchResults, error}) =
           getSingleMovieData={getSingleMovieData}
         />
       )
-   })
+    })
   }
 
   if (isLoading) {

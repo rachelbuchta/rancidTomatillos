@@ -20,7 +20,7 @@ module.exports = {
 	'rules': {
 		'indent': [
 			'error',
-			'tab'
+			2
 		],
 		'linebreak-style': [
 			'error',
@@ -33,6 +33,7 @@ module.exports = {
 		'semi': [
 			'error',
 			'never'
-		]
+		],
+    'react/prop-types': 'off'
 	}
 }

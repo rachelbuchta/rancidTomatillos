@@ -2,7 +2,7 @@ import React from 'react'
 import './Error.scss'
 import gif from '../../images/giphy.gif'
 
-const Error = ({error, errorStatus}) => {
+const Error = ({errorStatus}) => {
   if (errorStatus >= 400 && errorStatus <= 499) {
     return (
       <main className='main'>

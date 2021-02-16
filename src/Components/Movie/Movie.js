@@ -10,22 +10,22 @@ const Movie = ({average_rating, title, image, id, getSingleMovieData}) => {
     const starElements = Array(roundedNumber).fill(star)
     const createStars = starElements.map(star => {
       return (
-        <img className='starCountImg' src={star} alt='star-icon'/>
+        <img key={id} className='starCountImg' src={star} alt='star-icon'/>
       )
     })
-      return createStars
+    return createStars
   }
 
   return (
     <section key={id} className='cardContainer'>
       <article key={id} className='movieCard'>
 
-      <Link 
-      className='movieLink' 
-      to={`/${id}`} 
-      onClick={()=>getSingleMovieData(id)}>
-        <img className='cardImage' src={image} alt={title}/>
-      </Link>
+        <Link 
+          className='movieLink' 
+          to={`/${id}`} 
+          onClick={()=>getSingleMovieData(id)}>
+          <img className='cardImage' src={image} alt={title}/>
+        </Link>
 
       </article>
       <p className='stars'>
