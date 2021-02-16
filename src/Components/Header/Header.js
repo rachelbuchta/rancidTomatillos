@@ -1,9 +1,9 @@
 import React from 'react'
 import './Header.scss'
 import reelzLogo from '../../images/movieTicket.png'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const Header = ({toggleFavoritesPage}) => {
+const Header = () => {
 
     // const toggleFavoritesPage = () => {
     //   console.log(favoritesPage)
@@ -11,13 +11,9 @@ const Header = ({toggleFavoritesPage}) => {
     // }
     return (
       <header className='text'>
-        {/* <Link className='headerLink' to='/'>
-          <img className='headerImg' src={reelzLogo} alt='Reelz Logo'/>
-        </Link> */}
-        <NavLink className='favoritesPage' to='/favorites' onClick={toggleFavoritesPage}>
-          View Favorites 
-        </NavLink>
+         <Link className='headerLink' to='/'>
           <h1 className='shadows'>Reelz</h1>
+        </Link> 
       </header>
     )
 }
