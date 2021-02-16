@@ -3,7 +3,8 @@ import './Movie.scss'
 import { Link } from 'react-router-dom'
 import star from '../../images/favourites.png'
 
-const Movie = ({average_rating,title, image, id, getSingleMovieData}) => {
+
+const Movie = ({average_rating, title, image, id, getSingleMovieData}) => {
 
   const starCount = () => {
     const roundedNumber = Math.round(average_rating.toFixed(1))
@@ -15,20 +16,26 @@ const Movie = ({average_rating,title, image, id, getSingleMovieData}) => {
     })
     return createStars
   }
-    return (
-      <section className='cardContainer'>
-        <article className='movieCard'>
-          <Link  className='movieLink' to={`/${id}`} onClick={() => getSingleMovieData(id)}>
-            <img className='cardImage' src={image} alt={title}/>
-          </Link>
-        </article>
-          <p className='stars'>
-          {starCount()}
-          </p>
-      </section>
 
-      
-    )
-  }
+  return (
+    <section className='cardContainer'>
+      <article className='movieCard'>
+
+        <Link 
+          className='movieLink' 
+          to={`/${id}`} 
+          onClick={()=>getSingleMovieData(id)}>
+          <img className='cardImage' src={image} alt={title}/>
+        </Link>
+
+      </article>
+      <>
+        <p className='stars'>
+          {starCount()}
+        </p>
+      </>  
+    </section>
+  )
+}
 
 export default Movie  

@@ -170,9 +170,18 @@ main {
   .dateContainer,
   .movieMoney,
   footer {
-    flex-direction: column;
+    flex-direction: row;
+    font-size: .9em;
   }
   footer p {
     margin: 0%;
+  }
+}
+
+@media screen and (max-width: 430px) {
+
+  .dateContainer {
+    flex-direction: row;
+    font-size: .8em;
   }
 }

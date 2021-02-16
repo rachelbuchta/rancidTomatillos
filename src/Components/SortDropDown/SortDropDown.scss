@@ -1,7 +1,28 @@
 .dropDown {
   width: 17%;
-  height: 2em;
+  height: 2.4em;
   background-color: #495057;
   color: whitesmoke;
   border-radius: 5px;
+  border: 1px solid grey;
+}
+
+@media screen and (max-width: 900px) {
+  .dropDown {
+    width: 24%;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .dropDown {
+    width: 50%;
+    margin: 1%;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .dropDown {
+    width: 50%;
+    margin: 1%;
+  }
 }
