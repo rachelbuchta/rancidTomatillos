@@ -2,7 +2,7 @@ import React from 'react'
 import './Movies.scss'
 import Movie from '../Movie/Movie'
 
-const Movies = ({movies, getSingleMovieData, isLoading, searchResults, error, favoritedMovies, favoritesPage}) => {
+const Movies = ({movies, getSingleMovieData, isLoading, searchResults, error}) => {
   let movieCards
   const buildMovieCard = (type) => {
   return type.map(movie => {

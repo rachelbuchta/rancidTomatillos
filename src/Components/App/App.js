@@ -7,7 +7,6 @@ import MovieDetails from '../MovieDetails/MovieDetails'
 import Error from '../Error/Error'
 import SearchBar from '../SearchBar/SearchBar'
 import SortDropDown from '../SortDropDown/SortDropDown'
-import Favorites from '../Favorites/Favorites'
 import ReRoute from '../ReRoute/ReRoute'
 import { getAllMovies, getSingleMovie, getSingleMovieVideo, getFavorites, updateFavorites } from '../../util'
 import { Redirect, Route, Switch } from 'react-router-dom'
@@ -22,11 +21,8 @@ class App extends Component {
       error: '',
       isLoading: true,
       searchResults: null,
-      favoritedIds: null,
-      favoritedMovies: null,
-      favoritesPage: false,
       triggerDropDown: false
-     }
+    }
   }
 
   componentDidMount = () => {
@@ -43,14 +39,11 @@ class App extends Component {
         favorites = responses[1]
         this.setState({ movies: allMovies.movies, favoritedIds: favorites.ids, isLoading: false, error: false })
       })
-      .then(()=> {
-        this.findFavorites()
-      })
       .catch(error => {
         console.log('Movies Request Failed', error)
         console.log('whatever')
         const filteredResponses = responseStatus.filter(status => status > 299)
-        this.setState({ error: true, errorStatus: Number(filteredResponses) })
+        this.setState({ errorStatus: Number(filteredResponses) })
     })
   }
 
@@ -95,62 +88,55 @@ class App extends Component {
     this.setState({ searchResults: [...filteredMovies] })
   }
 
-  toggleFavoritesPage = () => {
-    this.setState({ favoritesPage: true })
-  }
-
-  findFavorites = () => {
-    this.setState({ isLoading: true })
-    let favoriteMovies = []
-    return this.state.favoritedIds.forEach(id => {
-       const foundMovies = this.state.movies.filter(movie => {
-        if(movie.id === id.favoritedId) {
-         return favoriteMovies.push(movie)
-       } 
-      })
-      this.setState({favoritedMovies: favoriteMovies, isLoading: false})
-      console.log(this.state.favoritedMovies)
-    })
-  }
-
-
   render() {
     return (
       <div className='App'>
-        <section className='test'>
-          <div className='searchContainer'>
-            <SortDropDown triggerDropDown={this.triggerDropDown} triggerDropDownState={this.state.triggerDropDown} sortByRatings={this.sortByRatings}/>
-            <SearchBar movies={this.state.movies} filterMovies={this.filterMovies}/>
-          </div>
 
-        <Header toggleFavoritesPage={this.toggleFavoritesPage}/>
-        </section>
+        <div className='searchContainer'>
+          <SortDropDown 
+          triggerDropDown={this.triggerDropDown} 
+          triggerDropDownState={this.state.triggerDropDown} 
+          sortByRatings={this.sortByRatings}
+          />
+
+          <SearchBar 
+          movies={this.state.movies} 
+          filterMovies={this.filterMovies}
+          />
+        </div>
+        <Header />
+
         {this.state.error && (
-        <Error error={this.state.error} errorStatus={this.state.errorStatus}/>
+        <Error error={this.state.error} 
+        errorStatus={this.state.errorStatus}/>
         )}
 
-
         <Switch>
+
         < Route 
           exact
           path='/' 
-          render={()=> <Movies movies={this.state.movies} searchResults={this.state.searchResults} getSingleMovieData={this.getSingleMovieData} isLoading={this.state.isLoading} favoritedMovies={this.state.favoritedMovies} favoritesPage={this.state.favoritesPage} triggerDropDown={this.state.triggerDropDown} error={this.state.error}/>}
-          />
-
-        < Route 
-          exact
-          path='/favorites'
-          render={()=> <Favorites favoritedMovies={this.state.favoritedMovies}/>}/>
+          render={()=> <Movies 
+          movies={this.state.movies} 
+          searchResults={this.state.searchResults} 
+          getSingleMovieData={this.getSingleMovieData} 
+          isLoading={this.state.isLoading} 
+          triggerDropDown={this.state.triggerDropDown} 
+          error={this.state.error}/>}
+        />
 
         < Route 
            exact
            path='/:id'
            render={ ( { match }) => {
              const { id } = match.params
-             return <MovieDetails currentMovie={this.state.currentMovie} isLoading={this.state.isLoading} />
-           }}/>
+             return <MovieDetails 
+              currentMovie={this.state.currentMovie} 
+              isLoading={this.state.isLoading}/>}}
+        />
 
         </Switch>
+        
         <Footer />
       </div>
     )
