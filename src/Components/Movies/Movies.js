@@ -6,6 +6,7 @@ import Movie from '../Movie/Movie'
 const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
   
   const buildMovieCard = (type) => {
+
     return type.map(movie => {
       return (
         <Movie
