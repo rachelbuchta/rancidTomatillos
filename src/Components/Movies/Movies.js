@@ -1,7 +1,7 @@
 import React from 'react'
 import './Movies.scss'
 import Movie from '../Movie/Movie'
-/* eslint-disable indent */
+
 
 const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
   
@@ -29,7 +29,7 @@ const Movies = ({movies, getSingleMovieData, isLoading, searchResults}) => {
 
   return (
     <section className='moviesContainer'>
-     {searchResults ? buildMovieCard(searchResults) : buildMovieCard(movies)}
+      {searchResults ? buildMovieCard(searchResults) : buildMovieCard(movies)}
     </section>
   )
 }
