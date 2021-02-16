@@ -1,6 +1,6 @@
 import React from 'react'
 import './MovieDetails.scss'
-import X from '../../images/cancel.png'
+import X from '../../images/exitIcon.png'
 import star from '../../images/favourites.png'
 import { Link } from 'react-router-dom'
 
