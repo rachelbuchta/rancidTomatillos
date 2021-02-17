@@ -49,11 +49,16 @@ Also challenging was refactoring from conditional rendering to incorporating Rou
 
 #### 
 #### Mobile View
-![mobileView](https://media.giphy.com/media/8g22yxLGHD2cyzyPxw/giphy.gif)
+![Mobile View](https://media.giphy.com/media/8g22yxLGHD2cyzyPxw/giphy.gif)
+
 #### Main View
-![mainView](https://media.giphy.com/media/exoBTanHsF18PUYiYB/giphy.gif)
+![Main View](https://media.giphy.com/media/dZukeMRrSgm3IxTWvL/giphy.gif)
+
+#### Search
+![Search](https://media.giphy.com/media/4LaKsg9HTKf0lQA8CH/giphy.gif)
 
 ### Links
 
-The link to the spec sheet that guided this project: https://frontend.turing.io/projects/module-3/rancid-tomatillos-v3.html
-The link to this repos project board: https://github.com/rachelbuchta/rancidTomatillos/projects/1
+The link to the spec sheet that guided this project: [Spec](https://frontend.turing.io/projects/module-3/rancid-tomatillos-v3.html)
+
+The link to this repos project board: [Project Board](https://github.com/rachelbuchta/rancidTomatillos/projects/1)
