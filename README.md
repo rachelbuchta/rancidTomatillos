@@ -20,7 +20,7 @@ To add more features to this project, or to simply view the code in action...
 4. Enter `npm start` to run the app or open in your text editor.  
 5. The app should open automatically, but you can also navigate to `http://localhost:3000/` to view the app as well.
 
-OR visit the live site (here)[]
+OR visit the live site [here](https://reelz-app.herokuapp.com/)
 
 ## Additional Features
 
