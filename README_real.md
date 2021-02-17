@@ -47,6 +47,10 @@ We still have more to learn on how to effectively handle and display errors, we 
 
 Also challenging was refactoring from conditional rendering to incorporating Router - we think if we focus on using Router from the beginning of a project, that will make the process simpler and cleaner.
 
+#### 
+![mobileView](https://media.giphy.com/media/8g22yxLGHD2cyzyPxw/giphy.gif)
+![mainView](https://media.giphy.com/media/exoBTanHsF18PUYiYB/giphy.gif)
+
 ### Links
 
 The link to the spec sheet that guided this project: https://frontend.turing.io/projects/module-3/rancid-tomatillos-v3.html
