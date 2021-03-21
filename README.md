@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# REELZ aka Rancid Tomatillos
+Mod3 Pair Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Reelz is a partner effort completed by [Rachel Buchta](https://github.com/rachelbuchta) and [Cole Fiscus](https://github.com/colefiscus) of the [Turing School of Software and Design](https://turing.io/).
+This project focuses on effectively constructing a React application including separating the use of class-based and functional components, retrieving and displaying data data fetched from a Web API, incorporating router to navigate through pages and using Cypress to test all user pathways of our application.
 
-In the project directory, you can run:
+When a user loads this application, they should be presented with a display that includes a prominent app title and a grid of movie posters, each representing an individual movie. Also showing should be a search bar in the upper-right-hand corner to search through movies by title. A sort by ratings drop down menu is on the right so a user can search by highest-to-lowest ratings or lowest-to-highest. When a user clicks on an individual movie title, they should be directed to a new page that shows the user additional info about the selected movie including the movie's genre(s), a brief description, trailers, average rating, and more.
 
-### `npm start`
+Technologies utilized to build this project include React, React-Router, JavaScript, Sass, and Cypress.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How to Use and/or Contribute
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To add more features to this project, or to simply view the code in action...
 
-### `npm test`
+1. Clone this repo (or first fork it and then clone) using `git clone [THIS REPO'S SSH KEY] [OPTIONAL DIRECTORY NAME]`.  
+2. `cd` into that directory.  
+3. Install any necessary dependencies using `npm install`.
+4. Enter `npm start` to run the app or open in your text editor.  
+5. The app should open automatically, but you can also navigate to `http://localhost:3000/` to view the app as well.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+OR visit the live site [here](https://reelz-app.herokuapp.com/)
 
-### `npm run build`
+## Additional Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ Other features not mentioned in the overview include:
+ 
+  - Loading screens taking into account the time to retrieve data from the specified Web APIs.
+  - Complete responsiveness across 3 breakpoints ranging from full screen to mobile view.
+  - Sorting of movies based on their average rating from either highest to lowest or lowest to highest.
+   
+## Future Iterations
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The first feature we would like to add to the project in the future would be a connected Web API that holds data of imagined users that would be using our app.
+This would let us create additional functionality such as allowing a user to favorite and rate the movies that they've seen which would be stored in our connected API via a POST request (along with removing that info via a DELETE request). After that we would also like to see some form of login page that would allow us to show the data (i.e. a user's favorited/rated movies) for multiple users.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project Wins / Challenges
 
-### `npm run eject`
+#### Wins
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This project was a great intro to using React along with React Router and Cypress as it gave us many more tools we now know how to use in our software development careers. A big win for us was getting better at knowing which methods and state should be passed down as props as opposed to creating more class-basec components.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Challenges
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+We still have more to learn on how to effectively handle and display errors, we could use more reps on using Cypress to test our application and all pathways (including sad paths), and we struggled to deploy an Express server to use alongside our front-end display.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Also challenging was refactoring from conditional rendering to incorporating Router - we think if we focus on using Router from the beginning of a project, that will make the process simpler and cleaner.
 
-## Learn More
+#### 
+#### Mobile View
+![Mobile View](https://media.giphy.com/media/8g22yxLGHD2cyzyPxw/giphy.gif)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Main View
+![Main View](https://media.giphy.com/media/dZukeMRrSgm3IxTWvL/giphy.gif)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Search
+![Search](https://media.giphy.com/media/4LaKsg9HTKf0lQA8CH/giphy.gif)
 
-### Code Splitting
+### Links
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The link to the spec sheet that guided this project: [Spec](https://frontend.turing.io/projects/module-3/rancid-tomatillos-v3.html)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The link to this repos project board: [Project Board](https://github.com/rachelbuchta/rancidTomatillos/projects/1)
