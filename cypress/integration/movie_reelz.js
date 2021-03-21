@@ -73,23 +73,23 @@ describe('Loading Pages', () => {
   })
 })
 
+describe('500 Error Page', () => {
+   before(() => {
+      cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+        statusCode: 500
+      })
+   })
+   it('Should render 500 error page', () => {
+  })
+})
+
 describe('404 Error Page', () => {
   it('Should render 404 error page', () => {
       cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
       statusCode: 404
     })
-  cy.visit('http://localhost:3000')
  })
 })
- 
- describe('500 Error Page', () => {
-  it('Should render 500 error page', () => {
-        cy.intercept('GET','https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
-        statusCode: 500
-      })
-    cy.visit('http://localhost:3000')
-  })
- })
  
 
 
